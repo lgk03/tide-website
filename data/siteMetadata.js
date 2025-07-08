@@ -1,16 +1,16 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Data Analysis Student Club at TUM',
+  title: 'TIDE (TUM Initiative for Data Engineering)',
   author: 'Luca Kollmer',
-  headerTitle: 'TUMDA',
+  headerTitle: 'TIDE (TUM Initiative for Data Engineering)',
   description:
-    'TUMDA is the Data Analysis Student Club at TUM. We are a group of students interested in data science, machine learning, and artificial intelligence.',
+    'TIDE (TUM Initiative for Data Engineering) is the Data Engineering Student Club at TUM. We are a group of students interested in data engineering/science, machine learning and related topics.',
 
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
   siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
-  siteLogo: `${process.env.BASE_PATH || ''}/static/images/tumda-logo-v1.png`,
+  siteLogo: `${process.env.BASE_PATH || ''}/static/images/tide_logo_v1.jpg`,
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
   mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'address@yoursite.com',
