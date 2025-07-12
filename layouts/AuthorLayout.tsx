@@ -12,7 +12,6 @@ interface Props {
 export default function AuthorLayout({ children, content, title }: Props) {
   const { name, avatar, occupation, company, email, twitter, bluesky, linkedin, github } = content
 
-
   return (
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -26,7 +25,6 @@ export default function AuthorLayout({ children, content, title }: Props) {
             {children}
           </div>
         </div>
-        
       </div>
     </>
   )
