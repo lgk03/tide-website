@@ -4,6 +4,7 @@ import AuthorLayout from '@/layouts/AuthorLayout'
 import { coreContent } from 'pliny/utils/contentlayer'
 import { Timeline } from '@/components/timeline'
 import { timelineData } from '@/data/timelineData'
+import ApplyNowButton from '@/components/ApplyNowButton'
 
 import { genPageMetadata } from 'app/seo'
 
@@ -23,6 +24,7 @@ export default function Page() {
       <AuthorLayout content={mainContent} title={'Why Join?'}>
         <MDXLayoutRenderer code={why.body.code} />
       </AuthorLayout>
+      <ApplyNowButton href="/apply" />
     </>
   )
 }
