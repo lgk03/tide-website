@@ -1,7 +1,7 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
   title: 'TIDE',
-  author: 'Luca Kollmer',
+  author: 'TUM Initiative for Data Engineering',
   headerTitle: 'TIDE',
   description:
     'TIDE (TUM Initiative for Data Engineering) is the Data Engineering Student Club at TUM. We are a group of students interested in data engineering/science, machine learning and related topics.',
@@ -13,8 +13,8 @@ const siteMetadata = {
   siteLogo: `${process.env.BASE_PATH || ''}/data/tide-logo.svg`,
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
   mastodon: 'https://mastodon.social/@mastodonuser',
-  email: 'address@yoursite.com',
-  github: 'https://github.com',
+  email: 'tide.tum@gmail.com',
+  github: 'https://github.com/TUM-Data-Analytics',
   x: 'https://twitter.com/x',
   // twitter: 'https://twitter.com/Twitter',
   facebook: 'https://facebook.com',
