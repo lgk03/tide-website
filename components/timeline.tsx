@@ -68,25 +68,22 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
         {/* Vertical animated timeline line */}
         <div
-          style={{
-            height: height + 'px', // match total content height
-          }}
-          className="absolute top-0 left-8 w-[2px] overflow-hidden 
-          bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] 
-          from-transparent from-[0%] via-neutral-200 to-transparent to-[99%]
-          [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] 
-          md:left-8 dark:via-neutral-700"
-        >
-          {/* Motion div to grow the colored part of the line on scroll */}
-          <motion.div
-            style={{
-              height: heightTransform,
-              opacity: opacityTransform,
-            }}
-            className="absolute inset-x-0 top-0 w-[2px] rounded-full 
-            bg-gradient-to-t from-purple-500 from-[0%] via-blue-500 via-[10%] to-transparent"
-          />
-        </div>
+  className="absolute top-0 bottom-0 left-8 w-[2px] overflow-hidden 
+    bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))]
+    from-transparent via-neutral-200 to-transparent 
+    [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]
+    md:left-8 dark:via-neutral-700"
+>
+  <motion.div
+    style={{
+      scaleY: scrollYProgress,
+      originY: 0,
+      opacity: opacityTransform,
+    }}
+    className="absolute inset-x-0 top-0 w-[2px] rounded-full 
+      bg-gradient-to-t from-purple-500 via-blue-500 to-transparent"
+  />
+</div>
       </div>
     </div>
   )
