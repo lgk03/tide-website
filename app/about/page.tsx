@@ -24,7 +24,7 @@ export default function Page() {
       <AuthorLayout content={mainContent} title={'Why Join?'}>
         <MDXLayoutRenderer code={why.body.code} />
       </AuthorLayout>
-      <ApplyNowButton href='/apply'/>
+      <ApplyNowButton href="/apply" />
     </>
   )
 }
