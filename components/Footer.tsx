@@ -1,6 +1,7 @@
 import Link from './Link'
 import siteMetadata from '@/data/siteMetadata'
 import SocialIcon from '@/components/social-icons'
+import Image from 'next/image'
 
 export default function Footer() {
   return (
@@ -26,9 +27,16 @@ export default function Footer() {
           <div>{` • `}</div>
           <Link href="/">{siteMetadata.title}</Link>
         </div>
-        <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
-          <Link href="https://github.com/timlrx/tailwind-nextjs-starter-blog">
-            Tailwind Nextjs Theme
+        <div className="mb-8 flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+          <span>Accredited by</span>
+          <Link href="https://www.tum.de" className="transition-opacity·hover:opacity-80">
+            <Image
+              src="/static/images/tum.svg"
+              alt="TUM Logo"
+              width={60}
+              height={20}
+              className="h-5 w-auto"
+            />
           </Link>
         </div>
       </div>
