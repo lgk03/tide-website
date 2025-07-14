@@ -12,7 +12,7 @@ const outputPath = path.join(__dirname, '..', 'public', 'static', 'favicons') //
 
 const configuration = {
   path: '/', // prefix for absolute paths
-  appName: 'TIDE (TUM Initiative for Data Engineering)',
+  appName: 'TIDE (TUM Initiative for Data Excellence)',
   appShortName: 'TIDE',
   appDescription: '',
   developerName: '',
