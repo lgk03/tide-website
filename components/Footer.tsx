@@ -27,7 +27,7 @@ export default function Footer() {
           {/* <div>{` • `}</div> */}
           {/* <Link href="/">{siteMetadata.title}</Link> */}
         </div>
-        <div className="mb-8 flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+        {/*<div className="mb-8 flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <span>Accredited by</span>
           <Link href="https://www.tum.de" className="transition-opacity·hover:opacity-80">
             <Image
@@ -39,7 +39,7 @@ export default function Footer() {
             />
           </Link>
         </div>
-      </div>
+      </div>*/}
     </footer>
   )
 }
