@@ -38,8 +38,8 @@ export default function Footer() {
               className="h-5 w-auto"
             />
           </Link>
-        </div>
-      </div>*/}
+        </div>*/}
+      </div>
     </footer>
   )
 }
