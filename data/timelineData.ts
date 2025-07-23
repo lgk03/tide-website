@@ -7,7 +7,7 @@ export const timelineData = [
   {
     title: 'July 2025',
     content:
-      'Our club was officially accredited by TUM after presenting to the Student Representative Council. Establishing us as an official student club within the university and strengthening our presence on campus.',
+      'Our club will officially be accredited by TUM after presenting to the Student Representative Council. Establishing us as an official student club within the university and strengthening our presence on campus.',
   },
   {
     title: 'Future',
