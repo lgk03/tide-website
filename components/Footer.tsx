@@ -27,9 +27,9 @@ export default function Footer() {
           {/* <div>{` • `}</div> */}
           {/* <Link href="/">{siteMetadata.title}</Link> */}
         </div>
-        {/*<div className="mb-8 flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+        <div className="mb-8 flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <span>Accredited by</span>
-          <Link href="https://www.tum.de" className="transition-opacity·hover:opacity-80">
+          <Link href="https://www.tum.de" className="transition-opacity hover:opacity-80">
             <Image
               src="/static/images/tum.svg"
               alt="TUM Logo"
@@ -38,7 +38,7 @@ export default function Footer() {
               className="h-5 w-auto"
             />
           </Link>
-        </div>*/}
+        </div>
       </div>
     </footer>
   )
