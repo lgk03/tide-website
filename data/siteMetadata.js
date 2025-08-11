@@ -19,7 +19,7 @@ const siteMetadata = {
   // twitter: 'https://twitter.com/Twitter',
   facebook: 'https://facebook.com',
   youtube: 'https://youtube.com',
-  linkedin: 'https://www.linkedin.com',
+  linkedin: 'https://www.linkedin.com/company/tidetum/',
   threads: 'https://www.threads.net',
   instagram: 'https://www.instagram.com',
   medium: 'https://medium.com',
