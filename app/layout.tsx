@@ -5,7 +5,7 @@ import 'remark-github-blockquote-alert/alert.css'
 import { Space_Grotesk } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
-import Header from '@/components/Header'
+import HeaderWrapper from '@/components/HeaderWrapper'
 import SectionContainer from '@/components/SectionContainer'
 import Footer from '@/components/Footer'
 import PageWrapper from '@/components/PageWrapper'
@@ -99,9 +99,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
           <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
-            <SectionContainer>
-              <Header />
-            </SectionContainer>
+            <HeaderWrapper />
             <main className="mb-auto">
               <PageWrapper>{children}</PageWrapper>
             </main>

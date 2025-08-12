@@ -7,8 +7,19 @@ import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
 import TideLogo from '@/data/tide-logo.svg'
 
-const Header = () => {
-  let headerClass = 'flex items-center w-full bg-white dark:bg-gray-950 justify-between py-10'
+interface HeaderProps {
+  isHomepage?: boolean
+}
+
+const Header = ({ isHomepage = false }: HeaderProps) => {
+  let headerClass = 'flex items-center w-full justify-between py-10'
+
+  if (isHomepage) {
+    headerClass += ' text-white'
+  } else {
+    headerClass += ' bg-white dark:bg-gray-950'
+  }
+
   if (siteMetadata.stickyNav) {
     headerClass += ' sticky top-0 z-50'
   }
@@ -21,7 +32,11 @@ const Header = () => {
             <TideLogo width={40} height={40} />
           </div>
           {typeof siteMetadata.headerTitle === 'string' ? (
-            <div className="hidden h-6 text-2xl font-semibold sm:block">
+            <div
+              className={`hidden h-6 text-2xl font-semibold sm:block ${
+                isHomepage ? 'text-white' : ''
+              }`}
+            >
               {siteMetadata.headerTitle}
             </div>
           ) : (
@@ -37,7 +52,11 @@ const Header = () => {
               <Link
                 key={link.title}
                 href={link.href}
-                className="hover:text-primary-500 dark:hover:text-primary-400 m-1 font-medium text-gray-900 dark:text-gray-100"
+                className={`m-1 font-medium transition-colors ${
+                  isHomepage
+                    ? 'text-white/90 hover:text-white'
+                    : 'hover:text-primary-500 dark:hover:text-primary-400 text-gray-900 dark:text-gray-100'
+                }`}
               >
                 {link.title}
               </Link>
