@@ -234,3 +234,57 @@ input:-webkit-autofill:focus {
     transform: translateY(0px);
   }
 }
+
+/* Video background optimizations */
+.video-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: -1;
+}
+
+/* Ensure video doesn't interfere with interactions */
+.video-background video {
+  pointer-events: none;
+}
+
+/* Subtle zoom animation for video backgrounds */
+.video-zoom {
+  animation: subtle-zoom 20s ease-in-out infinite alternate;
+}
+
+@keyframes subtle-zoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+/* Mobile optimization - disable video on small screens to save bandwidth */
+@media (max-width: 768px) {
+  .mobile-video-fallback video {
+    display: none !important;
+  }
+
+  .mobile-video-fallback::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #ec4899 100%);
+    z-index: 1;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .video-background video {
+    animation-play-state: paused;
+  }
+}

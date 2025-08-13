@@ -6,10 +6,13 @@ import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
 import NewsletterForm from 'pliny/ui/NewsletterForm'
 import InteractiveChart from '@/components/InteractiveChart'
+import VideoBackground from '@/components/VideoBackground'
 import { motion } from 'motion/react'
 import { useState, useEffect } from 'react'
 
 const MAX_DISPLAY = 3
+// const BACKGROUND_VIDEO = '/static/videos/water_drops.mp4'
+const BACKGROUND_VIDEO = '/static/videos/waves_slow.mp4'
 
 // Animated counter component
 function AnimatedCounter({ end, duration = 2000 }: { end: number; duration?: number }) {
@@ -97,9 +100,7 @@ export default function Home({ posts }) {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        {/* Animated gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 opacity-90" />
-        <div className="absolute inset-0 animate-pulse bg-gradient-to-tr from-cyan-400 via-blue-500 to-purple-600 opacity-70" />
+        <VideoBackground src={BACKGROUND_VIDEO} poster="/static/images/ocean.jpeg" overlay={true} />
 
         <FloatingParticles />
 
@@ -110,14 +111,15 @@ export default function Home({ posts }) {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            <h1 className="mb-6 text-6xl font-black tracking-tight text-white md:text-8xl lg:text-9xl">
-              <span className="bg-gradient-to-r from-yellow-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-                TIDE
-              </span>
+            <h1 className="mb-4 text-6xl font-black tracking-tight text-white md:text-8xl lg:text-9xl">
+              <span className="text-[#5c82ff]">TIDE</span>
             </h1>
+            <p className="mb-6 text-lg font-bold tracking-wide text-white/80 md:text-xl">
+              TUM Initiative for Data Excellence
+            </p>
             <p className="mx-auto mb-8 max-w-4xl text-xl leading-relaxed text-white/90 md:text-2xl">
-              TUM's most <span className="font-bold text-yellow-300">innovative</span> data science
-              community. Where students turn{' '}
+              TUM's most <span className="font-bold text-[#5c82ff]">innovative</span> data science
+              community.<br></br> Where students turn{' '}
               <span className="font-bold text-pink-300">data into magic</span> ✨
             </p>
           </motion.div>
@@ -132,7 +134,7 @@ export default function Home({ posts }) {
               href="/apply"
               className="transform rounded-full bg-white px-8 py-4 font-bold text-purple-600 shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-yellow-300 hover:text-purple-800"
             >
-              Join the Revolution 🚀
+              Join Us 🚀
             </Link>
             <Link
               href="/events"
@@ -150,9 +152,9 @@ export default function Home({ posts }) {
             transition={{ delay: 0.6, duration: 0.8 }}
           >
             {[
-              { label: 'Active Members', value: 150 },
-              { label: 'Projects Completed', value: 42 },
-              { label: 'Workshops Hosted', value: 28 },
+              { label: 'Active Members', value: 15 },
+              { label: 'Projects Completed', value: 0 },
+              { label: 'Workshops Hosted', value: 0 },
               { label: 'Coffee Consumed', value: 9999 },
             ].map((stat, index) => (
               <div key={index} className="text-center">
@@ -215,7 +217,7 @@ export default function Home({ posts }) {
               },
               {
                 title: 'Analytics',
-                description: 'Turning messy data into beautiful insights',
+                description: 'Turning messy data into beautiful insights across industries',
                 icon: '📊',
                 color: 'from-green-500 to-blue-500',
               },
@@ -306,23 +308,23 @@ export default function Home({ posts }) {
               {
                 quote:
                   'TIDE transformed my understanding of data science. The hands-on workshops and collaborative projects gave me skills I use every day in my internship!',
-                author: 'Sarah M.',
-                role: 'Computer Science, 3rd Year',
-                avatar: '👩‍💻',
+                author: 'Arthur G.',
+                role: 'M.Sc. Information Systems',
+                avatar: '👨🏻‍💻',
               },
               {
                 quote:
                   "The community here is incredible. I've made lifelong friends and learned more about ML in one semester than in all my courses combined.",
-                author: 'Alex K.',
-                role: "Data Science Master's",
-                avatar: '👨‍🔬',
+                author: 'Tim B.',
+                role: 'M.Sc. Mechanical Engineering',
+                avatar: '👷🏼‍♂️',
               },
               {
                 quote:
-                  "From zero Python knowledge to building my first neural network in 3 months. TIDE's mentorship program is game-changing!",
-                author: 'Maria L.',
-                role: 'Mathematics, 2nd Year',
-                avatar: '👩‍🎓',
+                  'My motivation for building TIDE lies in connecting different study fields and disciplines on their common denominator - Data. ',
+                author: 'Luca K.',
+                role: 'M.Sc. Information Systems',
+                avatar: '🧑‍💻',
               },
             ].map((testimonial, index) => (
               <motion.div
@@ -455,7 +457,12 @@ export default function Home({ posts }) {
 
       {/* Join Us CTA Section */}
       <section className="relative overflow-hidden bg-gray-900 py-20">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20" />
+        <VideoBackground src={BACKGROUND_VIDEO} opacity="opacity-30" overlay={false}>
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-gray-900/80" />
+          {/* Subtle gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-pink-600/10" />
+        </VideoBackground>
         <FloatingParticles />
 
         <div className="relative z-10 px-4 text-center">
@@ -513,16 +520,21 @@ export default function Home({ posts }) {
         </div>
       </section>
 
-      {/* Newsletter Section */}
+      {/* Newsletter Section
       {siteMetadata.newsletter?.provider && (
         <motion.section
-          className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 py-20"
+          className="relative overflow-hidden py-20"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="px-4 text-center">
+          <VideoBackground
+            src={BACKGROUND_VIDEO}
+            opacity="opacity-40"
+            overlay={true}
+          />
+          <div className="relative z-10 px-4 text-center">
             <h2 className="mb-6 text-4xl font-black text-white md:text-5xl">Stay in the Loop</h2>
             <p className="mb-8 text-xl text-white/90">
               Get the latest updates, event announcements, and data science insights delivered to
@@ -533,7 +545,7 @@ export default function Home({ posts }) {
             </div>
           </div>
         </motion.section>
-      )}
+      )} */}
     </>
   )
 }
