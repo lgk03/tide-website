@@ -7,8 +7,19 @@ import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
 import TideLogo from '@/data/tide-logo.svg'
 
-const Header = () => {
-  let headerClass = 'flex items-center w-full bg-white dark:bg-gray-950 justify-between py-10'
+interface HeaderProps {
+  isHomepage?: boolean
+}
+
+const Header = ({ isHomepage = false }: HeaderProps) => {
+  let headerClass = 'flex items-center w-full justify-between py-4'
+
+  if (isHomepage) {
+    headerClass += ' text-white'
+  } else {
+    headerClass += ' bg-white dark:bg-gray-950'
+  }
+
   if (siteMetadata.stickyNav) {
     headerClass += ' sticky top-0 z-50'
   }
@@ -17,11 +28,11 @@ const Header = () => {
     <header className={headerClass}>
       <Link href="/" aria-label={siteMetadata.headerTitle}>
         <div className="flex items-center justify-between">
-          <div className="mr-3">
-            <TideLogo width={40} height={40} />
+          <div className="mr-4">
+            <TideLogo width={48} height={48} />
           </div>
           {typeof siteMetadata.headerTitle === 'string' ? (
-            <div className="hidden h-6 text-2xl font-semibold sm:block">
+            <div className={`hidden text-3xl font-bold sm:block ${isHomepage ? 'text-white' : ''}`}>
               {siteMetadata.headerTitle}
             </div>
           ) : (
@@ -29,15 +40,19 @@ const Header = () => {
           )}
         </div>
       </Link>
-      <div className="flex items-center space-x-4 leading-5 sm:-mr-6 sm:space-x-6">
-        <div className="no-scrollbar hidden items-center gap-x-4 sm:flex">
+      <div className="flex items-center space-x-6 leading-5 sm:space-x-8">
+        <div className="no-scrollbar hidden items-center gap-x-6 sm:flex">
           {headerNavLinks
             .filter((link) => link.href !== '/')
             .map((link) => (
               <Link
                 key={link.title}
                 href={link.href}
-                className="hover:text-primary-500 dark:hover:text-primary-400 m-1 font-medium text-gray-900 dark:text-gray-100"
+                className={`text-lg font-semibold transition-colors ${
+                  isHomepage
+                    ? 'text-white/90 hover:text-white'
+                    : 'hover:text-primary-500 dark:hover:text-primary-400 text-gray-900 dark:text-gray-100'
+                }`}
               >
                 {link.title}
               </Link>

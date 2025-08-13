@@ -1,91 +1,551 @@
+'use client'
+
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
 import NewsletterForm from 'pliny/ui/NewsletterForm'
+import InteractiveChart from '@/components/InteractiveChart'
+import VideoBackground from '@/components/VideoBackground'
+import { motion } from 'motion/react'
+import { useState, useEffect } from 'react'
 
-const MAX_DISPLAY = 5
+const MAX_DISPLAY = 3
+// const BACKGROUND_VIDEO = '/static/videos/water_drops.mp4'
+const BACKGROUND_VIDEO = '/static/videos/waves_slow.mp4'
+
+// Animated counter component
+function AnimatedCounter({ end, duration = 2000 }: { end: number; duration?: number }) {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    let startTime: number | null = null
+    const animate = (currentTime: number) => {
+      if (startTime === null) startTime = currentTime
+      const progress = Math.min((currentTime - startTime) / duration, 1)
+      setCount(Math.floor(progress * end))
+      if (progress < 1) requestAnimationFrame(animate)
+    }
+    requestAnimationFrame(animate)
+  }, [end, duration])
+
+  return <span>{count}</span>
+}
+
+// Floating particles component
+function FloatingParticles() {
+  // Generate deterministic positions based on index to avoid hydration mismatch
+  const getParticlePosition = (index: number) => {
+    const positions = [
+      { left: 10, top: 20 },
+      { left: 85, top: 15 },
+      { left: 25, top: 80 },
+      { left: 70, top: 60 },
+      { left: 45, top: 30 },
+      { left: 90, top: 75 },
+      { left: 15, top: 50 },
+      { left: 60, top: 10 },
+      { left: 35, top: 90 },
+      { left: 80, top: 40 },
+      { left: 5, top: 70 },
+      { left: 95, top: 25 },
+      { left: 50, top: 85 },
+      { left: 20, top: 5 },
+      { left: 75, top: 95 },
+      { left: 40, top: 45 },
+      { left: 65, top: 65 },
+      { left: 30, top: 35 },
+      { left: 85, top: 55 },
+      { left: 55, top: 75 },
+    ]
+    return positions[index] || { left: 50, top: 50 }
+  }
+
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      {[...Array(20)].map((_, i) => {
+        const position = getParticlePosition(i)
+        return (
+          <motion.div
+            key={i}
+            className="absolute h-2 w-2 rounded-full bg-blue-400/20"
+            animate={{
+              x: [0, 100, 0],
+              y: [0, -100, 0],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 10 + i * 2,
+              repeat: Infinity,
+              delay: i * 0.5,
+            }}
+            style={{
+              left: `${position.left}%`,
+              top: `${position.top}%`,
+            }}
+          />
+        )
+      })}
+    </div>
+  )
+}
 
 export default function Home({ posts }) {
   return (
     <>
-      <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-          <h1 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 dark:text-gray-100">
-            Latest
-          </h1>
-          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-            {siteMetadata.description}
-          </p>
+      {/* Hero Section */}
+      <motion.section
+        className="relative flex min-h-screen items-center justify-center overflow-hidden pt-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <VideoBackground src={BACKGROUND_VIDEO} poster="/static/images/ocean.jpeg" overlay={true} />
+
+        <FloatingParticles />
+
+        {/* Hero content */}
+        <div className="relative z-10 px-4 text-center">
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+          >
+            <h1 className="mb-4 text-6xl font-black tracking-tight text-white md:text-8xl lg:text-9xl">
+              <span className="text-[#5c82ff]">TIDE</span>
+            </h1>
+            <p className="mb-6 text-lg font-bold tracking-wide text-white/80 md:text-xl">
+              TUM Initiative for Data Excellence
+            </p>
+            <p className="mx-auto mb-8 max-w-4xl text-xl leading-relaxed text-white/90 md:text-2xl">
+              TUM's most <span className="font-bold text-[#5c82ff]">innovative</span> data science
+              community.<br></br> Where students turn{' '}
+              <span className="font-bold text-pink-300">data into magic</span> ✨
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="mb-16 flex flex-col items-center justify-center gap-4 sm:flex-row"
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+          >
+            <Link
+              href="/apply"
+              className="transform rounded-full bg-white px-8 py-4 font-bold text-purple-600 shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-yellow-300 hover:text-purple-800"
+            >
+              Join Us 🚀
+            </Link>
+            <Link
+              href="/events"
+              className="transform rounded-full border-2 border-white px-8 py-4 font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-purple-600"
+            >
+              Explore Events
+            </Link>
+          </motion.div>
+
+          {/* Stats section */}
+          <motion.div
+            className="mx-auto grid max-w-5xl grid-cols-2 gap-8 md:grid-cols-4"
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+          >
+            {[
+              { label: 'Active Members', value: 15 },
+              { label: 'Projects Completed', value: 0 },
+              { label: 'Workshops Hosted', value: 0 },
+              { label: 'Coffee Consumed', value: 9999 },
+            ].map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="mb-2 text-3xl font-black text-white md:text-4xl">
+                  <AnimatedCounter end={stat.value} />
+                  {stat.value === 9999 ? '+' : ''}
+                </div>
+                <div className="text-sm text-white/80 md:text-base">{stat.label}</div>
+              </div>
+            ))}
+          </motion.div>
         </div>
-        <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-          {!posts.length && 'No posts found.'}
-          {posts.slice(0, MAX_DISPLAY).map((post) => {
-            const { slug, date, title, summary, tags } = post
-            return (
-              <li key={slug} className="py-12">
-                <article>
-                  <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
-                    <dl>
-                      <dt className="sr-only">Published on</dt>
-                      <dd className="text-base leading-6 font-medium text-gray-500 dark:text-gray-400">
-                        <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
-                      </dd>
-                    </dl>
-                    <div className="space-y-5 xl:col-span-3">
-                      <div className="space-y-6">
-                        <div>
-                          <h2 className="text-2xl leading-8 font-bold tracking-tight">
-                            <Link
-                              href={`/blog/${slug}`}
-                              className="text-gray-900 dark:text-gray-100"
-                            >
-                              {title}
-                            </Link>
-                          </h2>
-                          <div className="flex flex-wrap">
-                            {tags.map((tag) => (
-                              <Tag key={tag} text={tag} />
-                            ))}
-                          </div>
-                        </div>
-                        <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                          {summary}
-                        </div>
-                      </div>
-                      <div className="text-base leading-6 font-medium">
-                        <Link
-                          href={`/blog/${slug}`}
-                          className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                          aria-label={`Read more: "${title}"`}
-                        >
-                          Read more &rarr;
-                        </Link>
-                      </div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 transform"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <div className="flex h-10 w-6 justify-center rounded-full border-2 border-white/50">
+            <div className="mt-2 h-3 w-1 rounded-full bg-white/70" />
+          </div>
+        </motion.div>
+      </motion.section>
+
+      {/* What We Do Section */}
+      <section className="bg-gray-50 py-20 dark:bg-gray-900">
+        <div className="px-4">
+          <motion.div
+            className="mb-16 text-center"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="mb-6 text-4xl font-black text-gray-900 md:text-6xl dark:text-white">
+              What We{' '}
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Build
+              </span>
+            </h2>
+            <p className="mx-auto max-w-4xl text-xl text-gray-600 dark:text-gray-300">
+              From ML models that predict the future to data pipelines that power innovation
+            </p>
+          </motion.div>
+
+          <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-3">
+            {[
+              {
+                title: 'Machine Learning',
+                description: 'Building AI that actually works in the real world',
+                icon: '🤖',
+                color: 'from-blue-500 to-cyan-500',
+              },
+              {
+                title: 'Data Engineering',
+                description: 'Pipelines so smooth they make data scientists cry tears of joy',
+                icon: '⚡',
+                color: 'from-purple-500 to-pink-500',
+              },
+              {
+                title: 'Analytics',
+                description: 'Turning messy data into beautiful insights across industries',
+                icon: '📊',
+                color: 'from-green-500 to-blue-500',
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className="group relative"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                whileHover={{ y: -10 }}
+              >
+                <div className="relative overflow-hidden rounded-3xl border border-gray-200 bg-white p-8 shadow-xl transition-all duration-300 group-hover:shadow-2xl dark:border-gray-700 dark:bg-gray-800">
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 transition-opacity duration-300 group-hover:opacity-10`}
+                  />
+                  <div className="mb-4 text-6xl">{item.icon}</div>
+                  <h3 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">{item.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Growth Visualization Section */}
+      <section className="bg-white py-20 dark:bg-gray-800">
+        <div className="px-4">
+          <motion.div
+            className="mb-16 text-center"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="mb-6 text-4xl font-black text-gray-900 md:text-6xl dark:text-white">
+              Our{' '}
+              <span className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+                Journey
+              </span>
+            </h2>
+            <p className="mx-auto max-w-4xl text-xl text-gray-600 dark:text-gray-300">
+              Watch how we've grown from a small group of data enthusiasts to TUM's premier data
+              science community
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="mx-auto max-w-5xl"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <InteractiveChart />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Community Testimonials Section */}
+      <section className="bg-gradient-to-br from-purple-50 to-blue-50 py-20 dark:from-gray-900 dark:to-gray-800">
+        <div className="px-4">
+          <motion.div
+            className="mb-16 text-center"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="mb-6 text-4xl font-black text-gray-900 md:text-6xl dark:text-white">
+              What Our{' '}
+              <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                Community
+              </span>{' '}
+              Says
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300">
+              Real stories from real data scientists, engineers, and ML enthusiasts
+            </p>
+          </motion.div>
+
+          <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-3">
+            {[
+              {
+                quote:
+                  'TIDE transformed my understanding of data science. The hands-on workshops and collaborative projects gave me skills I use every day in my internship!',
+                author: 'Arthur G.',
+                role: 'M.Sc. Information Systems',
+                avatar: '👨🏻‍💻',
+              },
+              {
+                quote:
+                  "The community here is incredible. I've made lifelong friends and learned more about ML in one semester than in all my courses combined.",
+                author: 'Tim B.',
+                role: 'M.Sc. Mechanical Engineering',
+                avatar: '👷🏼‍♂️',
+              },
+              {
+                quote:
+                  'My motivation for building TIDE lies in connecting different study fields and disciplines on their common denominator - Data. ',
+                author: 'Luca K.',
+                role: 'M.Sc. Information Systems',
+                avatar: '🧑‍💻',
+              },
+            ].map((testimonial, index) => (
+              <motion.div
+                key={index}
+                className="group"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                whileHover={{ y: -5 }}
+              >
+                <div className="h-full rounded-3xl border border-white/20 bg-white/80 p-8 shadow-xl backdrop-blur-sm transition-all duration-300 group-hover:shadow-2xl dark:border-gray-700/50 dark:bg-gray-800/80">
+                  <div className="mb-6 text-center text-6xl">{testimonial.avatar}</div>
+                  <blockquote className="mb-6 text-gray-700 italic dark:text-gray-300">
+                    "{testimonial.quote}"
+                  </blockquote>
+                  <div className="text-center">
+                    <div className="font-bold text-gray-900 dark:text-white">
+                      {testimonial.author}
+                    </div>
+                    <div className="text-sm text-purple-600 dark:text-purple-400">
+                      {testimonial.role}
                     </div>
                   </div>
-                </article>
-              </li>
-            )
-          })}
-        </ul>
-      </div>
-      {posts.length > MAX_DISPLAY && (
-        <div className="flex justify-end text-base leading-6 font-medium">
-          <Link
-            href="/blog"
-            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-            aria-label="All posts"
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Latest Posts Section */}
+      <section className="bg-white py-20 dark:bg-gray-800">
+        <div className="px-4">
+          <motion.div
+            className="mb-16 text-center"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
           >
-            All Posts &rarr;
-          </Link>
+            <h2 className="mb-6 text-4xl font-black text-gray-900 md:text-6xl dark:text-white">
+              Latest{' '}
+              <span className="bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
+                Insights
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300">
+              Fresh takes on data science, ML, and everything in between
+            </p>
+          </motion.div>
+
+          <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-3">
+            {posts.slice(0, MAX_DISPLAY).map((post, index) => {
+              const { slug, date, title, summary, tags } = post
+              return (
+                <motion.article
+                  key={slug}
+                  className="group"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: index * 0.2 }}
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="h-full rounded-2xl border border-gray-200 bg-gray-50 p-6 transition-all duration-300 group-hover:shadow-xl dark:border-gray-700 dark:bg-gray-900">
+                    <div className="mb-3 text-sm font-medium text-purple-600 dark:text-purple-400">
+                      {formatDate(date, siteMetadata.locale)}
+                    </div>
+                    <h3 className="mb-4 text-xl font-bold text-gray-900 transition-colors group-hover:text-purple-600 dark:text-white dark:group-hover:text-purple-400">
+                      <Link href={`/blog/${slug}`}>{title}</Link>
+                    </h3>
+                    <p className="mb-4 line-clamp-3 text-gray-600 dark:text-gray-300">{summary}</p>
+                    <div className="mb-4 flex flex-wrap gap-2">
+                      {tags.slice(0, 3).map((tag) => (
+                        <Tag key={tag} text={tag} />
+                      ))}
+                    </div>
+                    <Link
+                      href={`/blog/${slug}`}
+                      className="inline-flex items-center font-medium text-purple-600 transition-colors hover:text-purple-800 dark:text-purple-400 dark:hover:text-purple-300"
+                    >
+                      Read more
+                      <svg
+                        className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </Link>
+                  </div>
+                </motion.article>
+              )
+            })}
+          </div>
+
+          {posts.length > MAX_DISPLAY && (
+            <motion.div
+              className="mt-12 text-center"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <Link
+                href="/blog"
+                className="inline-flex transform items-center rounded-full bg-gradient-to-r from-purple-600 to-pink-600 px-8 py-4 font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:from-purple-700 hover:to-pink-700"
+              >
+                Explore All Posts
+                <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
+            </motion.div>
+          )}
         </div>
-      )}
+      </section>
+
+      {/* Join Us CTA Section */}
+      <section className="relative overflow-hidden bg-gray-900 py-20">
+        <VideoBackground src={BACKGROUND_VIDEO} opacity="opacity-30" overlay={false}>
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-gray-900/80" />
+          {/* Subtle gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-pink-600/10" />
+        </VideoBackground>
+        <FloatingParticles />
+
+        <div className="relative z-10 px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="mb-6 text-4xl font-black text-white md:text-6xl">
+              Ready to Join the <span className="gradient-text">Data Revolution</span>?
+            </h2>
+            <p className="mx-auto mb-12 max-w-4xl text-xl text-gray-300">
+              Whether you're a complete beginner or a seasoned pro, there's a place for you in our
+              community. Let's build the future of data science together! 🚀
+            </p>
+
+            <div className="mx-auto mb-12 grid max-w-5xl gap-8 md:grid-cols-2">
+              <motion.div
+                className="rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-sm"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="mb-4 text-4xl">🎓</div>
+                <h3 className="mb-2 text-xl font-bold text-white">For Students</h3>
+                <p className="text-gray-300">Learn, grow, and network with like-minded peers</p>
+              </motion.div>
+
+              <motion.div
+                className="rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-sm"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="mb-4 text-4xl">💼</div>
+                <h3 className="mb-2 text-xl font-bold text-white">For Professionals</h3>
+                <p className="text-gray-300">Share knowledge and mentor the next generation</p>
+              </motion.div>
+            </div>
+
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Link
+                href="/apply"
+                className="transform rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 px-10 py-4 text-lg font-black text-gray-900 shadow-2xl transition-all duration-300 hover:scale-105 hover:from-yellow-300 hover:to-orange-400"
+              >
+                Apply Now 🎯
+              </Link>
+              <Link
+                href="/events"
+                className="transform rounded-full border-2 border-white px-10 py-4 text-lg font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-gray-900"
+              >
+                Attend an Event
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Newsletter Section
       {siteMetadata.newsletter?.provider && (
-        <div className="flex items-center justify-center pt-4">
-          <NewsletterForm />
-        </div>
-      )}
+        <motion.section
+          className="relative overflow-hidden py-20"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <VideoBackground
+            src={BACKGROUND_VIDEO}
+            opacity="opacity-40"
+            overlay={true}
+          />
+          <div className="relative z-10 px-4 text-center">
+            <h2 className="mb-6 text-4xl font-black text-white md:text-5xl">Stay in the Loop</h2>
+            <p className="mb-8 text-xl text-white/90">
+              Get the latest updates, event announcements, and data science insights delivered to
+              your inbox
+            </p>
+            <div className="mx-auto max-w-md">
+              <NewsletterForm />
+            </div>
+          </div>
+        </motion.section>
+      )} */}
     </>
   )
 }
