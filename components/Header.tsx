@@ -12,7 +12,7 @@ interface HeaderProps {
 }
 
 const Header = ({ isHomepage = false }: HeaderProps) => {
-  let headerClass = 'flex items-center w-full justify-between py-4'
+  let headerClass = 'flex items-center w-full justify-between py-4 min-h-[64px]'
 
   if (isHomepage) {
     headerClass += ' text-white'
@@ -58,9 +58,9 @@ const Header = ({ isHomepage = false }: HeaderProps) => {
               </Link>
             ))}
         </div>
-        <SearchButton />
-        <ThemeSwitch />
-        <MobileNav />
+        <SearchButton isHomepage={isHomepage} />
+        <ThemeSwitch isHomepage={isHomepage} />
+        <MobileNav isHomepage={isHomepage} />
       </div>
     </header>
   )

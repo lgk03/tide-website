@@ -85,30 +85,48 @@ export default function InteractiveChart() {
   ]
 
   return (
-    <div className="rounded-3xl border border-gray-200 bg-white p-8 shadow-xl dark:border-gray-700 dark:bg-gray-800">
-      <div className="mb-8">
-        <h3 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">Our Growth Story</h3>
-        <div className="flex flex-wrap gap-3">
+    <div className="rounded-3xl border border-gray-200 bg-white p-4 shadow-xl sm:p-6 md:p-8 dark:border-gray-700 dark:bg-gray-800">
+      <div className="mb-6 sm:mb-8">
+        <h3 className="mb-3 text-xl font-bold text-gray-900 sm:mb-4 sm:text-2xl dark:text-white">
+          Our Growth Story
+        </h3>
+        <div className="flex flex-wrap gap-2 sm:gap-3">
           {metrics.map((metric) => (
             <button
               key={metric.key}
               onClick={() => setActiveMetric(metric.key)}
-              className={`flex items-center gap-2 rounded-full px-4 py-2 font-medium transition-all duration-300 ${
+              className={`flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-medium transition-all duration-300 sm:gap-2 sm:px-4 sm:py-2 sm:text-base ${
                 activeMetric === metric.key
                   ? `${metric.color} scale-105 transform text-white shadow-lg`
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
               }`}
             >
-              <span>{metric.icon}</span>
-              {metric.label}
+              <span className="text-sm sm:text-base">{metric.icon}</span>
+              <span className="xs:inline hidden sm:inline">{metric.label}</span>
             </button>
           ))}
         </div>
       </div>
 
+      {/* Mobile metric indicator - only show on small screens */}
+      <div className="mb-3 flex justify-center sm:hidden">
+        <div
+          className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium text-white ${
+            activeMetric === 'members'
+              ? 'bg-blue-500'
+              : activeMetric === 'projects'
+                ? 'bg-purple-500'
+                : 'bg-pink-500'
+          }`}
+        >
+          <span>{metrics.find((m) => m.key === activeMetric)?.icon}</span>
+          <span>Viewing {metrics.find((m) => m.key === activeMetric)?.label}</span>
+        </div>
+      </div>
+
       <div className="relative h-64 rounded-lg bg-gray-50 dark:bg-gray-700">
         {/* Y-axis labels */}
-        <div className="absolute top-4 bottom-4 left-2 flex w-8 flex-col justify-between text-xs text-gray-500 dark:text-gray-400">
+        <div className="absolute top-4 bottom-4 left-1 flex w-6 flex-col justify-between text-xs text-gray-500 sm:left-2 sm:w-8 dark:text-gray-400">
           {[
             maxValue,
             Math.round(maxValue * 0.75),
@@ -123,7 +141,7 @@ export default function InteractiveChart() {
         </div>
 
         {/* Chart area */}
-        <div className="mr-4 ml-12 flex h-full items-end justify-between gap-2 py-4">
+        <div className="mr-2 ml-8 flex h-full items-end justify-between gap-1 py-4 sm:mr-4 sm:ml-12 sm:gap-2">
           {data.map((point, index) => {
             const heightPercent = (point[activeMetric] / maxValue) * 90 // Use 90% of available height
             const heightPx = Math.max(heightPercent * 2, 10) // Convert to pixels with minimum
@@ -143,7 +161,7 @@ export default function InteractiveChart() {
               >
                 <div className="relative flex w-full justify-center">
                   <motion.div
-                    className="w-12 origin-bottom cursor-pointer"
+                    className="w-8 origin-bottom cursor-pointer sm:w-10 md:w-12"
                     style={{ height: `${heightPx}px` }}
                     initial={{ scaleY: 0 }}
                     animate={{ scaleY: 1 }}
@@ -165,7 +183,7 @@ export default function InteractiveChart() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="absolute -top-12 left-1/2 z-20 -translate-x-1/2 transform rounded-lg bg-gray-900 px-3 py-1 text-sm font-medium whitespace-nowrap text-white shadow-lg"
+                      className="absolute -top-12 left-1/2 z-20 -translate-x-1/2 transform rounded-lg bg-gray-900 px-2 py-1 text-xs font-medium whitespace-nowrap text-white shadow-lg sm:px-3 sm:text-sm"
                     >
                       {point[activeMetric]} {activeMetric}
                       <div className="absolute top-full left-1/2 h-0 w-0 -translate-x-1/2 transform border-t-4 border-r-4 border-l-4 border-transparent border-t-gray-900" />
@@ -173,7 +191,7 @@ export default function InteractiveChart() {
                   )}
                 </div>
 
-                <div className="mt-3 text-sm font-medium text-gray-600 dark:text-gray-400">
+                <div className="mt-2 text-xs font-medium text-gray-600 sm:mt-3 sm:text-sm dark:text-gray-400">
                   {point.month}
                 </div>
               </div>
@@ -182,8 +200,8 @@ export default function InteractiveChart() {
         </div>
       </div>
 
-      <div className="mt-8 text-center">
-        <p className="text-gray-600 dark:text-gray-400">
+      <div className="mt-6 text-center sm:mt-8">
+        <p className="text-sm text-gray-600 sm:text-base dark:text-gray-400">
           {activeMetric === 'members' && "We're growing fast! Join our amazing community 🌟"}
           {activeMetric === 'projects' && 'Innovation never stops at TIDE 💡'}
           {activeMetric === 'events' && 'Always something exciting happening! 🎊'}

@@ -6,7 +6,11 @@ import { Fragment, useState, useEffect, useRef } from 'react'
 import Link from './Link'
 import headerNavLinks from '@/data/headerNavLinks'
 
-const MobileNav = () => {
+interface MobileNavProps {
+  isHomepage?: boolean
+}
+
+const MobileNav = ({ isHomepage = false }: MobileNavProps) => {
   const [navShow, setNavShow] = useState(false)
   const navRef = useRef(null)
 
@@ -33,7 +37,11 @@ const MobileNav = () => {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
-          className="hover:text-primary-500 dark:hover:text-primary-400 h-8 w-8 text-gray-900 dark:text-gray-100"
+          className={`h-8 w-8 ${
+            isHomepage
+              ? 'text-white/90 hover:text-white'
+              : 'hover:text-primary-500 dark:hover:text-primary-400 text-gray-900 dark:text-gray-100'
+          }`}
         >
           <path
             fillRule="evenodd"
