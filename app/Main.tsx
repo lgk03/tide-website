@@ -96,7 +96,7 @@ export default function Home({ posts }) {
     <>
       {/* Hero Section */}
       <motion.section
-        className="relative flex min-h-screen items-center justify-center overflow-hidden pt-0"
+        className="relative flex min-h-screen items-center justify-center overflow-hidden pt-24 pb-8 sm:pt-28"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
