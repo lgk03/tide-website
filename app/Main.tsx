@@ -6,6 +6,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
 import NewsletterForm from 'pliny/ui/NewsletterForm'
 import InteractiveChart from '@/components/InteractiveChart'
+import { CURRENT_MEMBER_COUNT } from '@/data/memberStats'
 import VideoBackground from '@/components/VideoBackground'
 import { motion } from 'motion/react'
 import { useState, useEffect } from 'react'
@@ -132,7 +133,7 @@ export default function Home({ posts }) {
           >
             <Link
               href="/apply"
-              className="transform rounded-full bg-white px-8 py-4 font-bold text-purple-600 shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-yellow-300 hover:text-purple-800"
+              className="transform rounded-full border-2 border-white px-8 py-4 font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-purple-600"
             >
               Join Us 🚀
             </Link>
@@ -152,7 +153,7 @@ export default function Home({ posts }) {
             transition={{ delay: 0.6, duration: 0.8 }}
           >
             {[
-              { label: 'Active Members', value: 15 },
+              { label: 'Active Members', value: CURRENT_MEMBER_COUNT },
               { label: 'Projects Completed', value: 0 },
               { label: 'Workshops Hosted', value: 0 },
               { label: 'Coffee Consumed', value: 9999 },
