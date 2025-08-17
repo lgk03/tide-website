@@ -132,7 +132,7 @@ export default function Home({ posts }) {
           >
             <Link
               href="/apply"
-              className="transform rounded-full bg-white px-8 py-4 font-bold text-purple-600 shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-yellow-300 hover:text-purple-800"
+              className="transform rounded-full border-2 border-white px-8 py-4 font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-purple-600"
             >
               Join Us 🚀
             </Link>
