@@ -12,7 +12,7 @@ import { useState, useEffect } from 'react'
 
 const MAX_DISPLAY = 3
 // const BACKGROUND_VIDEO = '/static/videos/water_drops.mp4'
-const BACKGROUND_VIDEO = '/static/videos/waves_slow.mp4'
+const BACKGROUND_VIDEO = '/static/videos/waves_slow_cut.mp4'
 
 // Animated counter component
 function AnimatedCounter({ end, duration = 2000 }: { end: number; duration?: number }) {
