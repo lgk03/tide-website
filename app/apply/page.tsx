@@ -2,6 +2,12 @@
 
 import React, { useState } from 'react'
 
+type SubmissionStatus = {
+  submitting: boolean
+  succeeded: boolean
+  error: string | null
+}
+
 const ApplyPage = () => {
   const [form, setForm] = useState({
     name: '',
@@ -11,17 +17,51 @@ const ApplyPage = () => {
     motivation: '',
   })
 
+  const [status, setStatus] = useState<SubmissionStatus>({
+    submitting: false,
+    succeeded: false,
+    error: null,
+  })
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const subject = encodeURIComponent('TIDE Application')
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nAge: ${form.age}\nSemester: ${form.semester}\nStudy Field: ${form.studyField}\nMotivation: ${form.motivation}`
-    )
-    window.location.href = `mailto:tide.tum@gmail.com?subject=${subject}&body=${body}`
+    setStatus({ submitting: true, succeeded: false, error: null })
+
+    try {
+      const formElement = e.currentTarget
+      const formData = new FormData()
+      formData.append('name', form.name)
+      formData.append('age', form.age)
+      formData.append('semester', form.semester)
+      formData.append('studyField', form.studyField)
+      formData.append('motivation', form.motivation)
+      formData.append('_subject', 'TIDE Application')
+
+      const response = await fetch('https://formspree.io/f/xdkdvwpw', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+        },
+        body: formData,
+      })
+
+      if (response.ok) {
+        setStatus({ submitting: false, succeeded: true, error: null })
+        setForm({ name: '', age: '', semester: '', studyField: '', motivation: '' })
+        formElement.reset()
+      } else {
+        const data = await response.json().catch(() => null)
+        const message =
+          data?.error || data?.errors?.[0]?.message || 'Something went wrong. Please try again.'
+        setStatus({ submitting: false, succeeded: false, error: message })
+      }
+    } catch (err) {
+      setStatus({ submitting: false, succeeded: false, error: 'Network error. Please try again.' })
+    }
   }
 
   return (
@@ -31,6 +71,16 @@ const ApplyPage = () => {
         onSubmit={handleSubmit}
         className="space-y-6 rounded-lg bg-white p-8 shadow dark:bg-gray-900"
       >
+        {status.succeeded && (
+          <p className="rounded-md bg-green-50 p-3 text-sm text-green-700 dark:bg-green-900/30 dark:text-green-300">
+            Thank you! Your application has been submitted.
+          </p>
+        )}
+        {status.error && (
+          <p className="rounded-md bg-red-50 p-3 text-sm text-red-700 dark:bg-red-900/30 dark:text-red-300">
+            {status.error}
+          </p>
+        )}
         <div>
           <label className="mb-2 block font-medium text-gray-700 dark:text-gray-200" htmlFor="name">
             Name
@@ -111,11 +161,13 @@ const ApplyPage = () => {
             className="focus:ring-primary-500 w-full rounded border border-gray-300 px-3 py-2 focus:ring-2 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
           />
         </div>
+        <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
         <button
           type="submit"
-          className="bg-primary-500 hover:bg-primary-600 focus:ring-primary-400 w-full rounded px-4 py-2 font-semibold text-white focus:ring-2 focus:outline-none"
+          disabled={status.submitting}
+          className="bg-primary-500 hover:bg-primary-600 focus:ring-primary-400 w-full rounded px-4 py-2 font-semibold text-white focus:ring-2 focus:outline-none disabled:opacity-60"
         >
-          Send Application
+          {status.submitting ? 'Submitting...' : 'Send Application'}
         </button>
       </form>
     </div>
