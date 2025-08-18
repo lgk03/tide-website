@@ -11,10 +11,12 @@ type SubmissionStatus = {
 const ApplyPage = () => {
   const [form, setForm] = useState({
     name: '',
-    age: '',
+    email: '',
     semester: '',
     studyField: '',
     motivation: '',
+    estimatedHours: '',
+    linkedin: '',
   })
 
   const [status, setStatus] = useState<SubmissionStatus>({
@@ -33,12 +35,7 @@ const ApplyPage = () => {
 
     try {
       const formElement = e.currentTarget
-      const formData = new FormData()
-      formData.append('name', form.name)
-      formData.append('age', form.age)
-      formData.append('semester', form.semester)
-      formData.append('studyField', form.studyField)
-      formData.append('motivation', form.motivation)
+      const formData = new FormData(formElement)
       formData.append('_subject', 'TIDE Application')
 
       const response = await fetch('https://formspree.io/f/xdkdvwpw', {
@@ -51,7 +48,15 @@ const ApplyPage = () => {
 
       if (response.ok) {
         setStatus({ submitting: false, succeeded: true, error: null })
-        setForm({ name: '', age: '', semester: '', studyField: '', motivation: '' })
+        setForm({
+          name: '',
+          email: '',
+          semester: '',
+          studyField: '',
+          motivation: '',
+          estimatedHours: '',
+          linkedin: '',
+        })
         formElement.reset()
       } else {
         const data = await response.json().catch(() => null)
@@ -96,32 +101,17 @@ const ApplyPage = () => {
           />
         </div>
         <div>
-          <label className="mb-2 block font-medium text-gray-700 dark:text-gray-200" htmlFor="age">
-            Age
-          </label>
-          <input
-            type="number"
-            id="age"
-            name="age"
-            value={form.age}
-            onChange={handleChange}
-            required
-            min="16"
-            className="focus:ring-primary-500 w-full rounded border border-gray-300 px-3 py-2 focus:ring-2 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
-          />
-        </div>
-        <div>
           <label
             className="mb-2 block font-medium text-gray-700 dark:text-gray-200"
-            htmlFor="semester"
+            htmlFor="email"
           >
-            Semester
+            Email
           </label>
           <input
-            type="text"
-            id="semester"
-            name="semester"
-            value={form.semester}
+            type="email"
+            id="email"
+            name="email"
+            value={form.email}
             onChange={handleChange}
             required
             className="focus:ring-primary-500 w-full rounded border border-gray-300 px-3 py-2 focus:ring-2 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
@@ -147,6 +137,23 @@ const ApplyPage = () => {
         <div>
           <label
             className="mb-2 block font-medium text-gray-700 dark:text-gray-200"
+            htmlFor="semester"
+          >
+            Semester
+          </label>
+          <input
+            type="text"
+            id="semester"
+            name="semester"
+            value={form.semester}
+            onChange={handleChange}
+            required
+            className="focus:ring-primary-500 w-full rounded border border-gray-300 px-3 py-2 focus:ring-2 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
+          />
+        </div>
+        <div>
+          <label
+            className="mb-2 block font-medium text-gray-700 dark:text-gray-200"
             htmlFor="motivation"
           >
             Motivation
@@ -160,6 +167,56 @@ const ApplyPage = () => {
             rows={4}
             className="focus:ring-primary-500 w-full rounded border border-gray-300 px-3 py-2 focus:ring-2 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
           />
+        </div>
+        <div>
+          <label
+            className="mb-2 block font-medium text-gray-700 dark:text-gray-200"
+            htmlFor="estimatedHours"
+          >
+            Estimated Time for Initiative (hours per week)
+          </label>
+          <input
+            type="number"
+            id="estimatedHours"
+            name="estimatedHours"
+            value={form.estimatedHours}
+            onChange={handleChange}
+            min="0"
+            step="1"
+            placeholder="e.g., 5"
+            className="focus:ring-primary-500 w-full rounded border border-gray-300 px-3 py-2 focus:ring-2 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
+          />
+        </div>
+        <div>
+          <label
+            className="mb-2 block font-medium text-gray-700 dark:text-gray-200"
+            htmlFor="linkedin"
+          >
+            LinkedIn (optional)
+          </label>
+          <input
+            type="url"
+            id="linkedin"
+            name="linkedin"
+            value={form.linkedin}
+            onChange={handleChange}
+            placeholder="https://www.linkedin.com/in/your-profile"
+            className="focus:ring-primary-500 w-full rounded border border-gray-300 px-3 py-2 focus:ring-2 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
+          />
+        </div>
+        <div>
+          <label className="mb-2 block font-medium text-gray-700 dark:text-gray-200" htmlFor="cv">
+            CV (optional)
+          </label>
+          <input
+            type="file"
+            id="cv"
+            name="cv"
+            accept=".pdf,.doc,.docx,.txt,.rtf"
+            disabled
+            className="focus:ring-primary-500 w-full cursor-not-allowed rounded border border-gray-300 px-3 py-2 opacity-60 file:mr-4 file:rounded file:border-0 file:bg-gray-100 file:px-3 file:py-2 file:text-sm focus:ring-2 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:file:bg-gray-700"
+          />
+          <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">File uploads coming soon.</p>
         </div>
         <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
         <button
