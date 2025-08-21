@@ -79,7 +79,7 @@ export default function InteractiveChart() {
   }, [activeMetric, maxValue])
 
   const metrics = [
-    { key: 'members' as const, label: 'Members', color: 'bg-blue-500', icon: '👥' },
+    { key: 'members' as const, label: 'Members', color: 'bg-primary-500', icon: '👥' },
     { key: 'projects' as const, label: 'Projects', color: 'bg-purple-500', icon: '🚀' },
     { key: 'events' as const, label: 'Events', color: 'bg-pink-500', icon: '🎉' },
   ]
@@ -113,7 +113,7 @@ export default function InteractiveChart() {
         <div
           className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium text-white ${
             activeMetric === 'members'
-              ? 'bg-blue-500'
+              ? 'bg-primary-500'
               : activeMetric === 'projects'
                 ? 'bg-purple-500'
                 : 'bg-pink-500'
@@ -170,7 +170,7 @@ export default function InteractiveChart() {
                     <div
                       className={`h-full w-full rounded-t-lg shadow-md ${
                         activeMetric === 'members'
-                          ? 'bg-gradient-to-t from-blue-400 to-blue-600'
+                          ? 'from-primary-400 to-primary-600 bg-gradient-to-t'
                           : activeMetric === 'projects'
                             ? 'bg-gradient-to-t from-purple-400 to-purple-600'
                             : 'bg-gradient-to-t from-pink-400 to-pink-600'

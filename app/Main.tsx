@@ -506,7 +506,7 @@ export default function Home({ posts }) {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/apply"
-                className="transform rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 px-10 py-4 text-lg font-black text-gray-900 shadow-2xl transition-all duration-300 hover:scale-105 hover:from-yellow-300 hover:to-orange-400"
+                className="transform rounded-full border-2 border-white px-10 py-4 text-lg font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-gray-900"
               >
                 Apply Now 🎯
               </Link>
