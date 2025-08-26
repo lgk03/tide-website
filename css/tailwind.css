@@ -277,8 +277,23 @@ input:-webkit-autofill:focus {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #ec4899 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #581c87 50%, #be185d 100%);
+    opacity: 0.7;
     z-index: 1;
+  }
+
+  /* Additional dark overlay for better text readability on mobile */
+  .mobile-video-fallback::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+  }
+
+  /* Make ocean image darker on mobile for better text readability */
+  .mobile-video-fallback [style*='background-image'] {
+    filter: brightness(0.4) contrast(1.2);
   }
 }
 
