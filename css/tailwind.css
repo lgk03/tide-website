@@ -283,6 +283,20 @@ input:-webkit-autofill:focus {
     background-repeat: no-repeat;
     z-index: 1;
   }
+
+  /* Additional dark overlay for better text readability on mobile */
+  .mobile-video-fallback::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+  }
+
+  /* Make ocean image darker on mobile for better text readability */
+  .mobile-video-fallback [style*='background-image'] {
+    filter: brightness(0.4) contrast(1.2);
+  }
 }
 
 /* Reduce motion for users who prefer it */

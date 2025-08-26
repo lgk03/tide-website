@@ -112,10 +112,18 @@ export default function VideoBackground({
         />
       )}
 
+      {/* Ocean image fallback for mobile with dark overlay */}
+      {poster && (
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat md:hidden"
+          style={{ backgroundImage: `url(${poster})` }}
+        />
+      )}
+
       {/* Overlay for better text readability */}
       {overlay && (
         <>
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-black/40 md:bg-black/40" />
           <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 via-purple-600/20 to-pink-600/30" />
         </>
       )}
