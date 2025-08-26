@@ -277,8 +277,10 @@ input:-webkit-autofill:focus {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #1e3a8a 0%, #581c87 50%, #be185d 100%);
-    opacity: 0.7;
+    background-image: url('/static/images/ocean.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     z-index: 1;
   }
 
