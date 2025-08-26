@@ -23,14 +23,13 @@ export default function HeaderWrapper() {
 
   if (isHomepage) {
     return (
-      <div className="fixed top-0 z-50 w-full transition-all duration-300">
-        <div
-          className={`absolute inset-0 transition-all duration-300 ${
-            scrolled
-              ? 'border-b border-white/30 bg-white/20 shadow-xl shadow-black/10 backdrop-blur-xl'
-              : 'border-b border-white/20 bg-gradient-to-r from-white/5 via-white/10 to-white/5 shadow-lg shadow-black/5 backdrop-blur-lg'
-          }`}
-        />
+      <div
+        className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+          scrolled
+            ? 'border-b border-white/30 bg-black/40 shadow-xl shadow-black/10 backdrop-blur-xl dark:bg-black/60'
+            : 'border-b border-white/20 bg-black/30 shadow-lg shadow-black/5 backdrop-blur-lg dark:bg-black/50'
+        }`}
+      >
         <div className="relative px-4 sm:px-6 xl:px-8">
           <Header isHomepage={true} />
         </div>

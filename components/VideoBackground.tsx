@@ -38,14 +38,15 @@ export default function VideoBackground({
   const [shouldShowVideo, setShouldShowVideo] = useState(true)
 
   useEffect(() => {
-    // Check if user prefers reduced motion or is on a slow connection
+    // Check if user prefers reduced motion, is on a slow connection, or on mobile
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const isMobile = window.matchMedia('(max-width: 768px)').matches
     const connection = (navigator as Navigator & { connection?: { effectiveType: string } })
       .connection
     const isSlowConnection =
       connection && (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g')
 
-    if (prefersReducedMotion || isSlowConnection) {
+    if (prefersReducedMotion || isSlowConnection || isMobile) {
       setShouldShowVideo(false)
       return
     }
@@ -103,9 +104,12 @@ export default function VideoBackground({
         </video>
       )}
 
-      {/* Fallback gradient background */}
+      {/* Fallback ocean image background */}
       {(!shouldShowVideo || hasError) && (
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600" />
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: 'url(/static/images/ocean.jpeg)' }}
+        />
       )}
 
       {/* Overlay for better text readability */}
