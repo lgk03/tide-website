@@ -192,10 +192,7 @@ export default function Home({ posts }) {
             transition={{ duration: 0.8 }}
           >
             <h2 className="mb-6 text-4xl font-black text-gray-900 md:text-6xl dark:text-white">
-              What We{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Build
-              </span>
+              What We <span className="text-[#5c82ff]">Build</span>
             </h2>
             <p className="mx-auto max-w-4xl text-xl text-gray-600 dark:text-gray-300">
               From ML models that predict the future to data pipelines that power innovation
@@ -208,19 +205,19 @@ export default function Home({ posts }) {
                 title: 'Machine Learning',
                 description: 'Building AI that actually works in the real world',
                 icon: '🤖',
-                color: 'from-blue-500 to-cyan-500',
+                color: 'from-[#5c82ff] to-pink-300',
               },
               {
                 title: 'Data Engineering',
                 description: 'Pipelines so smooth they make data scientists cry tears of joy',
                 icon: '⚡',
-                color: 'from-purple-500 to-pink-500',
+                color: 'from-[#5c82ff] to-pink-300',
               },
               {
                 title: 'Analytics',
                 description: 'Turning messy data into beautiful insights across industries',
                 icon: '📊',
-                color: 'from-green-500 to-blue-500',
+                color: 'from-[#5c82ff] to-pink-300',
               },
             ].map((item, index) => (
               <motion.div
@@ -259,10 +256,7 @@ export default function Home({ posts }) {
             transition={{ duration: 0.8 }}
           >
             <h2 className="mb-6 text-4xl font-black text-gray-900 md:text-6xl dark:text-white">
-              Our{' '}
-              <span className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
-                Journey
-              </span>
+              Our <span className="text-[#5c82ff]">Journey</span>
             </h2>
             <p className="mx-auto max-w-4xl text-xl text-gray-600 dark:text-gray-300">
               Watch how we've grown from a small group of data enthusiasts to TUM's premier data
@@ -293,11 +287,7 @@ export default function Home({ posts }) {
             transition={{ duration: 0.8 }}
           >
             <h2 className="mb-6 text-4xl font-black text-gray-900 md:text-6xl dark:text-white">
-              What Our{' '}
-              <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                Community
-              </span>{' '}
-              Says
+              What Our <span className="text-[#5c82ff]">Community</span> Says
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300">
               Real stories from real data scientists, engineers, and ML enthusiasts
@@ -368,10 +358,7 @@ export default function Home({ posts }) {
             transition={{ duration: 0.8 }}
           >
             <h2 className="mb-6 text-4xl font-black text-gray-900 md:text-6xl dark:text-white">
-              Latest{' '}
-              <span className="bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
-                Insights
-              </span>
+              Latest <span className="text-[#5c82ff]">Insights</span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300">
               Fresh takes on data science, ML, and everything in between

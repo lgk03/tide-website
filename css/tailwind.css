@@ -198,7 +198,7 @@ input:-webkit-autofill:focus {
 
 /* Animated gradient text */
 .gradient-text {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: linear-gradient(-45deg, #5c82ff, #f9a8d4, #5c82ff, #f9a8d4);
   background-size: 400% 400%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
