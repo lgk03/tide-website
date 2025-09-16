@@ -146,7 +146,7 @@ export default function Home({ posts }) {
           </motion.div>
 
           {/* Stats section */}
-          <motion.div
+          {/* <motion.div
             className="mx-auto grid max-w-5xl grid-cols-2 gap-8 md:grid-cols-4"
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -166,7 +166,7 @@ export default function Home({ posts }) {
                 <div className="text-sm text-white/80 md:text-base">{stat.label}</div>
               </div>
             ))}
-          </motion.div>
+          </motion.div> */}
         </div>
 
         {/* Scroll indicator */}
@@ -246,7 +246,7 @@ export default function Home({ posts }) {
       </section>
 
       {/* Growth Visualization Section */}
-      <section className="bg-white py-20 dark:bg-gray-800">
+      {/* <section className="bg-white py-20 dark:bg-gray-800">
         <div className="px-4">
           <motion.div
             className="mb-16 text-center"
@@ -274,7 +274,7 @@ export default function Home({ posts }) {
             <InteractiveChart />
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Community Testimonials Section */}
       <section className="bg-gradient-to-br from-purple-50 to-blue-50 py-20 dark:from-gray-900 dark:to-gray-800">
