@@ -11,6 +11,7 @@ export const timelineData = [
   },
   {
     title: 'Future',
-    content: 'A blank page eager for its story.',
+    content:
+      'We plan to launch 1-2 student-led projects and host 3-4 industry events in the upcoming semester, bringing ideas into action and growing our community.',
   },
 ]
