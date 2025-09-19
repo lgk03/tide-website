@@ -50,10 +50,6 @@ const getLast6Months = (): DataPoint[] => {
     const baseProjects = PROJECT_GROWTH_DATA[i]
     const baseEvents = EVENT_GROWTH_DATA[i]
 
-    console.log(
-      `Month ${i}: members=${baseMembers}, projects=${baseProjects}, events=${baseEvents}`
-    )
-
     data.push({
       month: `${monthName} ${year === currentYear ? '' : year}`.trim(),
       members: baseMembers,
@@ -72,11 +68,6 @@ export default function InteractiveChart() {
   // Generate dynamic data for last 6 months
   const data = getLast6Months()
   const maxValue = Math.max(...data.map((d) => d[activeMetric]))
-
-  // Debug logging
-  useEffect(() => {
-    console.log('InteractiveChart rendered:', { activeMetric, maxValue, data })
-  }, [activeMetric, maxValue])
 
   const metrics = [
     { key: 'members' as const, label: 'Members', color: 'bg-primary-500', icon: '👥' },
@@ -146,11 +137,6 @@ export default function InteractiveChart() {
             const heightPercent = (point[activeMetric] / maxValue) * 90 // Use 90% of available height
             const heightPx = Math.max(heightPercent * 2, 10) // Convert to pixels with minimum
             const isHovered = hoveredIndex === index
-
-            // Debug logging for height calculation
-            console.log(
-              `${point.month}: value=${point[activeMetric]}, maxValue=${maxValue}, heightPercent=${heightPercent}%, heightPx=${heightPx}px`
-            )
 
             return (
               <div
