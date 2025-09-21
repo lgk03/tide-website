@@ -74,13 +74,13 @@ export default function Home({ posts }) {
           >
             <Link
               href="/apply"
-              className="transform rounded-full border-2 border-white px-8 py-4 font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-purple-600"
+              className="transform rounded-full border-2 border-white px-8 py-4 font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#5c82ff]"
             >
               Join Us 🚀
             </Link>
             <Link
               href="/events"
-              className="transform rounded-full border-2 border-white px-8 py-4 font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-purple-600"
+              className="transform rounded-full border-2 border-white px-8 py-4 font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#5c82ff]"
             >
               Explore Events
             </Link>
@@ -433,13 +433,13 @@ export default function Home({ posts }) {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/apply"
-                className="transform rounded-full border-2 border-white px-10 py-4 text-lg font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-gray-900"
+                className="transform rounded-full border-2 border-white px-10 py-4 text-lg font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#5c82ff]"
               >
                 Apply Now 🎯
               </Link>
               <Link
                 href="/events"
-                className="transform rounded-full border-2 border-white px-10 py-4 text-lg font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-gray-900"
+                className="transform rounded-full border-2 border-white px-10 py-4 text-lg font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#5c82ff]"
               >
                 Attend an Event
               </Link>
