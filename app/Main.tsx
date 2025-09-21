@@ -35,64 +35,6 @@ function AnimatedCounter({ end, duration = 2000 }: { end: number; duration?: num
   return <span>{count}</span>
 }
 
-// Floating particles component
-function FloatingParticles() {
-  // Generate deterministic positions based on index to avoid hydration mismatch
-  const getParticlePosition = (index: number) => {
-    const positions = [
-      { left: 10, top: 20 },
-      { left: 85, top: 15 },
-      { left: 25, top: 80 },
-      { left: 70, top: 60 },
-      { left: 45, top: 30 },
-      { left: 90, top: 75 },
-      { left: 15, top: 50 },
-      { left: 60, top: 10 },
-      { left: 35, top: 90 },
-      { left: 80, top: 40 },
-      { left: 5, top: 70 },
-      { left: 95, top: 25 },
-      { left: 50, top: 85 },
-      { left: 20, top: 5 },
-      { left: 75, top: 95 },
-      { left: 40, top: 45 },
-      { left: 65, top: 65 },
-      { left: 30, top: 35 },
-      { left: 85, top: 55 },
-      { left: 55, top: 75 },
-    ]
-    return positions[index] || { left: 50, top: 50 }
-  }
-
-  return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      {[...Array(20)].map((_, i) => {
-        const position = getParticlePosition(i)
-        return (
-          <motion.div
-            key={i}
-            className="absolute h-2 w-2 rounded-full bg-blue-400/20"
-            animate={{
-              x: [0, 100, 0],
-              y: [0, -100, 0],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 10 + i * 2,
-              repeat: Infinity,
-              delay: i * 0.5,
-            }}
-            style={{
-              left: `${position.left}%`,
-              top: `${position.top}%`,
-            }}
-          />
-        )
-      })}
-    </div>
-  )
-}
-
 export default function Home({ posts }) {
   return (
     <div>
@@ -104,8 +46,6 @@ export default function Home({ posts }) {
         transition={{ duration: 1 }}
       >
         <VideoBackground src={BACKGROUND_VIDEO} poster="/static/images/ocean.jpeg" overlay={true} />
-
-        <FloatingParticles />
 
         {/* Hero content */}
         <div className="relative z-10 px-4 text-center">
@@ -135,13 +75,13 @@ export default function Home({ posts }) {
           >
             <Link
               href="/apply"
-              className="transform rounded-full border-2 border-white px-8 py-4 font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-purple-600"
+              className="transform rounded-full border-2 border-white px-8 py-4 font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#5c82ff]"
             >
               Join Us 🚀
             </Link>
             <Link
               href="/events"
-              className="transform rounded-full border-2 border-white px-8 py-4 font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-purple-600"
+              className="transform rounded-full border-2 border-white px-8 py-4 font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#5c82ff]"
             >
               Explore Events
             </Link>
@@ -453,7 +393,6 @@ export default function Home({ posts }) {
           {/* Subtle gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-pink-600/10" />
         </VideoBackground>
-        <FloatingParticles />
 
         <div className="relative z-10 px-4 text-center">
           <motion.div
@@ -495,13 +434,13 @@ export default function Home({ posts }) {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/apply"
-                className="transform rounded-full border-2 border-white px-10 py-4 text-lg font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-gray-900"
+                className="transform rounded-full border-2 border-white px-10 py-4 text-lg font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#5c82ff]"
               >
                 Apply Now 🎯
               </Link>
               <Link
                 href="/events"
-                className="transform rounded-full border-2 border-white px-10 py-4 text-lg font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-gray-900"
+                className="transform rounded-full border-2 border-white px-10 py-4 text-lg font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#5c82ff]"
               >
                 Attend an Event
               </Link>
