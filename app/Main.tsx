@@ -14,7 +14,8 @@ import { useState, useEffect } from 'react'
 const MAX_DISPLAY = 3
 // const BACKGROUND_VIDEO = '/static/videos/water_drops.mp4'
 // const BACKGROUND_VIDEO = '/static/videos/waves_looped_1920x1080.mp4'
-const BACKGROUND_VIDEO = '/static/videos/waves_looped_720p.mp4'
+// const BACKGROUND_VIDEO = '/static/videos/waves_looped_720p.mp4'
+const BACKGROUND_VIDEO = '/static/videos/waves_looped_shortend.mp4'
 
 // Animated counter component
 function AnimatedCounter({ end, duration = 2000 }: { end: number; duration?: number }) {
@@ -94,7 +95,7 @@ function FloatingParticles() {
 
 export default function Home({ posts }) {
   return (
-    <div className="no-scrollbar">
+    <div>
       {/* Hero Section */}
       <motion.section
         className="relative flex min-h-screen items-center justify-center overflow-hidden pt-24 pb-8 sm:pt-28"
