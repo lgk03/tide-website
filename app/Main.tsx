@@ -45,7 +45,11 @@ export default function Home({ posts }) {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <VideoBackground src={BACKGROUND_VIDEO} poster="/static/images/ocean.jpeg" overlay={true} />
+        <VideoBackground
+          src={BACKGROUND_VIDEO}
+          poster="/static/images/ocean-min.jpeg"
+          overlay={true}
+        />
 
         {/* Hero content */}
         <div className="relative z-10 px-4 text-center">
