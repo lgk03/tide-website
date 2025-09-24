@@ -286,7 +286,7 @@ input:-webkit-autofill:focus {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('/static/images/ocean.jpeg');
+    background-image: url('/static/images/ocean-min.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -313,4 +313,19 @@ input:-webkit-autofill:focus {
   .video-background video {
     animation-play-state: paused;
   }
+}
+
+/* Hide scrollbars completely while keeping scroll functionality */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: none;
+}
+
+/* IE and Edge */
+html {
+  -ms-overflow-style: none;
 }

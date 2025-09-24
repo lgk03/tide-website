@@ -17,7 +17,7 @@ export default function SubpageHero({
   subtitle,
   className = '',
   backgroundVideoSrc = '/static/videos/waves_slow.mp4',
-  poster = '/static/images/ocean.jpeg',
+  poster = '/static/images/ocean-min.jpeg',
   overlay = true,
   children,
 }: SubpageHeroProps) {
