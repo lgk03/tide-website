@@ -108,7 +108,7 @@ export default function VideoBackground({
       {(!shouldShowVideo || hasError) && (
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: 'url(/static/images/ocean.jpeg)' }}
+          style={{ backgroundImage: 'url(/static/images/ocean.min.jpeg)' }}
         />
       )}
 

@@ -244,7 +244,7 @@ export default function Home({ posts }) {
             {[
               {
                 quote:
-                  'TIDE transformed my understanding of data science. The hands-on workshops and collaborative projects gave me skills I use every day in my internship!',
+                  "TIDE pushed me to move from just understanding systems to actually improving them. It challenges how I think, work and lead, reminding me that real change starts with clarity, consistency and the willingness to aim higher than what's expected.",
                 author: 'Arthur G.',
                 role: 'M.Sc. Information Systems',
                 avatar: '👨🏻‍💻',
