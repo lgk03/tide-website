@@ -54,9 +54,11 @@ export default function Home({ posts }) {
         {/* Hero content */}
         <div className="relative z-10 px-4 text-center">
           <motion.div
-            initial={{ y: 50, opacity: 0 }}
+            initial={false}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
+            // initial={{ y: 50, opacity: 0 }}
+            // animate={{ y: 0, opacity: 1 }}
+            // transition={{ delay: 0.2, duration: 0.8 }}
           >
             <h1 className="mb-4 text-6xl font-black tracking-tight text-white md:text-8xl lg:text-9xl">
               <span className="text-[#5c82ff]">TIDE</span>
