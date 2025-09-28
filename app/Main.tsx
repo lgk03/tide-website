@@ -244,7 +244,7 @@ export default function Home({ posts }) {
             {[
               {
                 quote:
-                  "TIDE pushed me to move from just understanding systems to actually improving them. It challenges how I think, work and lead, reminding me that real change starts with clarity, consistency and the willingness to aim higher than what's expected.",
+                  'TIDE inspires me to improve systems and grow personally. It shows that real change starts with clarity, consistency, and the courage to aim higher than expected.',
                 author: 'Arthur G.',
                 role: 'M.Sc. Information Systems',
                 avatar: '👨🏻‍💻',
