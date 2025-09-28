@@ -75,9 +75,11 @@ export default function Home({ posts }) {
 
           <motion.div
             className="mb-16 flex flex-col items-center justify-center gap-4 sm:flex-row"
-            initial={{ y: 50, opacity: 0 }}
+            initial={false}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
+            // initial={{ y: 50, opacity: 0 }}
+            // animate={{ y: 0, opacity: 1 }}
+            // transition={{ delay: 0.4, duration: 0.8 }}
           >
             <Link
               href="/apply"
