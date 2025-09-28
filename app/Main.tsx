@@ -255,10 +255,10 @@ export default function Home({ posts }) {
               },
               {
                 quote:
-                  "The community here is incredible. I've made lifelong friends and learned more about ML in one semester than in all my courses combined.",
+                  'My background in mechanical engineering inspires me to build TIDE as a system where I can learn continuously, connect diverse fields, and transform complexity into clarity.',
                 author: 'Tim B.',
                 role: 'M.Sc. Mechanical Engineering',
-                avatar: '👷🏼‍♂️',
+                avatar: '👨🏻‍🔧',
               },
               {
                 quote:
