@@ -258,7 +258,7 @@ export default function Home({ posts }) {
               },
               {
                 quote:
-                  'My motivation for building TIDE lies in connecting different study fields and disciplines on their common denominator - Data. ',
+                  'My motivation for building TIDE lies in connecting different study fields and disciplines on their common denominator - Data.',
                 author: 'Luca K.',
                 role: 'M.Sc. Information Systems',
                 avatar: '🧑‍💻',
