@@ -9,6 +9,7 @@ import InteractiveChart from '@/components/InteractiveChart'
 import { CURRENT_MEMBER_COUNT } from '@/data/memberStats'
 import VideoBackground from '@/components/VideoBackground'
 import MemberCarousel from '@/components/MemberCarousel'
+import { Member } from '../lib/members'
 import { motion } from 'motion/react'
 import { useState, useEffect } from 'react'
 
@@ -36,7 +37,12 @@ function AnimatedCounter({ end, duration = 2000 }: { end: number; duration?: num
   return <span>{count}</span>
 }
 
-export default function Home({ posts }) {
+interface HomeProps {
+  posts: any[]
+  members: Member[]
+}
+
+export default function Home({ posts, members }: HomeProps) {
   return (
     <div>
       {/* Hero Section */}
@@ -57,9 +63,9 @@ export default function Home({ posts }) {
           <motion.div
             initial={false}
             animate={{ y: 0, opacity: 1 }}
-            // initial={{ y: 50, opacity: 0 }}
-            // animate={{ y: 0, opacity: 1 }}
-            // transition={{ delay: 0.2, duration: 0.8 }}
+          // initial={{ y: 50, opacity: 0 }}
+          // animate={{ y: 0, opacity: 1 }}
+          // transition={{ delay: 0.2, duration: 0.8 }}
           >
             <h1 className="mb-4 text-6xl font-black tracking-tight text-white md:text-8xl lg:text-9xl">
               <span className="text-[#5c82ff]">TIDE</span>
@@ -78,9 +84,9 @@ export default function Home({ posts }) {
             className="mb-16 flex flex-col items-center justify-center gap-4 sm:flex-row"
             initial={false}
             animate={{ y: 0, opacity: 1 }}
-            // initial={{ y: 50, opacity: 0 }}
-            // animate={{ y: 0, opacity: 1 }}
-            // transition={{ delay: 0.4, duration: 0.8 }}
+          // initial={{ y: 50, opacity: 0 }}
+          // animate={{ y: 0, opacity: 1 }}
+          // transition={{ delay: 0.4, duration: 0.8 }}
           >
             <Link
               href="/apply"
@@ -241,7 +247,7 @@ export default function Home({ posts }) {
               Meet Our <span className="text-[#5c82ff]">Community</span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300">
-              Real stories from real data scientists, engineers, and ML enthusiasts
+              A collective of learners, builders, and data enthusiasts.
             </p>
           </motion.div>
 
@@ -251,7 +257,7 @@ export default function Home({ posts }) {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <MemberCarousel />
+            <MemberCarousel members={members} />
           </motion.div>
         </div>
       </section>
