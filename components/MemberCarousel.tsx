@@ -18,10 +18,20 @@ export default function MemberCarousel({ members }: MemberCarouselProps) {
     const [currentIndex, setCurrentIndex] = useState(0)
     const [isHovered, setIsHovered] = useState(false)
 
+    // Auto-rotate every 4 seconds when not hovered
+    useEffect(() => {
+        if (!isHovered && members && members.length > 0) {
+            const interval = setInterval(() => {
+                setCurrentIndex((prev) => (prev + 1) % members.length)
+            }, 4000)
+            return () => clearInterval(interval)
+        }
+    }, [isHovered, members])
+
     // Safety check for empty members array
     if (!members || members.length === 0) {
         return (
-            <div className="relative h-[500px] w-full overflow-hidden flex items-center justify-center">
+            <div className="relative flex h-[500px] w-full items-center justify-center overflow-hidden">
                 <div className="text-center text-gray-500 dark:text-gray-400">
                     <p>No members data available</p>
                 </div>
@@ -29,18 +39,8 @@ export default function MemberCarousel({ members }: MemberCarouselProps) {
         )
     }
 
-    // Auto-rotate every 4 seconds when not hovered
-    useEffect(() => {
-        if (!isHovered) {
-            const interval = setInterval(() => {
-                setCurrentIndex((prev) => (prev + 1) % members.length)
-            }, 4000)
-            return () => clearInterval(interval)
-        }
-    }, [isHovered, members.length])
-
-    const getVisibleMembers = () => {
-        const visible = []
+    const getVisibleMembers = (): (Member & { position: number })[] => {
+        const visible: (Member & { position: number })[] = []
         for (let i = 0; i < 3; i++) {
             const index = (currentIndex + i) % members.length
             visible.push({ ...members[index], position: i })
@@ -83,38 +83,34 @@ export default function MemberCarousel({ members }: MemberCarouselProps) {
                                 initial={{
                                     x: isLeft ? -400 : isRight ? 400 : 0,
                                     scale: isCenter ? 1 : 0.8,
-                                    opacity: 0
+                                    opacity: 0,
                                 }}
                                 animate={{
                                     x: isLeft ? -200 : isRight ? 200 : 0,
                                     scale: isCenter ? 1 : 0.8,
                                     opacity: isCenter ? 1 : 0.6,
-                                    rotateY: isLeft ? -15 : isRight ? 15 : 0
+                                    rotateY: isLeft ? -15 : isRight ? 15 : 0,
                                 }}
                                 exit={{
                                     x: isLeft ? -400 : isRight ? 400 : 0,
-                                    opacity: 0
+                                    opacity: 0,
                                 }}
                                 transition={{
                                     duration: 0.6,
-                                    ease: 'easeInOut'
+                                    ease: 'easeInOut',
                                 }}
                                 whileHover={{
                                     scale: isCenter ? 1.05 : 0.85,
-                                    y: isCenter ? -10 : -5
+                                    y: isCenter ? -10 : -5,
                                 }}
                                 onClick={() => handleMemberClick(member.position)}
                                 style={{
                                     perspective: '1000px',
-                                    transformStyle: 'preserve-3d'
+                                    transformStyle: 'preserve-3d',
                                 }}
                             >
                                 <div
-                                    className={`
-                  relative h-96 w-80 rounded-3xl border border-white/20 bg-white/90 p-8 shadow-2xl backdrop-blur-sm transition-all duration-300
-                  dark:border-gray-700/50 dark:bg-gray-800/90
-                  ${isCenter ? 'shadow-3xl' : 'shadow-xl'}
-                `}
+                                    className={`relative h-96 w-80 rounded-3xl border border-white/20 bg-white/90 p-8 shadow-2xl backdrop-blur-sm transition-all duration-300 dark:border-gray-700/50 dark:bg-gray-800/90 ${isCenter ? 'shadow-3xl' : 'shadow-xl'} `}
                                 >
                                     {/* Gradient overlay */}
                                     <div
@@ -178,7 +174,7 @@ export default function MemberCarousel({ members }: MemberCarouselProps) {
 
                                         {/* Quote */}
                                         <div className="flex-1">
-                                            <blockquote className="text-sm italic leading-relaxed text-gray-700 dark:text-gray-300">
+                                            <blockquote className="text-sm leading-relaxed text-gray-700 italic dark:text-gray-300">
                                                 "{truncateText(member.quote, 150)}"
                                             </blockquote>
                                         </div>
@@ -202,14 +198,10 @@ export default function MemberCarousel({ members }: MemberCarouselProps) {
                 </AnimatePresence>
             </div>
 
-
-
             {/* Side navigation arrows */}
             <button
-                className="absolute left-4 top-1/2 z-30 -translate-y-1/2 transform rounded-full bg-white/80 p-3 shadow-lg transition-all duration-300 hover:bg-white hover:scale-110 dark:bg-gray-800/80 dark:hover:bg-gray-800"
-                onClick={() =>
-                    setCurrentIndex((prev) => (prev - 1 + members.length) % members.length)
-                }
+                className="absolute top-1/2 left-4 z-30 -translate-y-1/2 transform rounded-full bg-white/80 p-3 shadow-lg transition-all duration-300 hover:scale-110 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800"
+                onClick={() => setCurrentIndex((prev) => (prev - 1 + members.length) % members.length)}
             >
                 <svg
                     className="h-6 w-6 text-gray-700 dark:text-gray-300"
@@ -222,7 +214,7 @@ export default function MemberCarousel({ members }: MemberCarouselProps) {
             </button>
 
             <button
-                className="absolute right-4 top-1/2 z-30 -translate-y-1/2 transform rounded-full bg-white/80 p-3 shadow-lg transition-all duration-300 hover:bg-white hover:scale-110 dark:bg-gray-800/80 dark:hover:bg-gray-800"
+                className="absolute top-1/2 right-4 z-30 -translate-y-1/2 transform rounded-full bg-white/80 p-3 shadow-lg transition-all duration-300 hover:scale-110 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800"
                 onClick={() => setCurrentIndex((prev) => (prev + 1) % members.length)}
             >
                 <svg

@@ -43,7 +43,7 @@ export function getMembers(): Member[] {
 }
 
 function parseCSVLine(line: string): string[] {
-  const result = []
+  const result: string[] = []
   let current = ''
   let inQuotes = false
   

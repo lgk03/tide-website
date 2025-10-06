@@ -7,7 +7,7 @@ export default async function Page() {
   const sortedPosts = sortPosts(allBlogs)
   const posts = allCoreContent(sortedPosts)
   const members = getMembers()
-  
+
   return (
     <div className="w-full">
       <Main posts={posts} members={members} />

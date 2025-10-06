@@ -37,8 +37,19 @@ function AnimatedCounter({ end, duration = 2000 }: { end: number; duration?: num
   return <span>{count}</span>
 }
 
+interface BlogPost {
+  slug: string
+  date: string
+  title: string
+  summary?: string
+  tags?: string[]
+  draft?: boolean
+  images?: string[]
+  authors?: string[]
+}
+
 interface HomeProps {
-  posts: any[]
+  posts: BlogPost[]
   members: Member[]
 }
 
@@ -63,9 +74,9 @@ export default function Home({ posts, members }: HomeProps) {
           <motion.div
             initial={false}
             animate={{ y: 0, opacity: 1 }}
-          // initial={{ y: 50, opacity: 0 }}
-          // animate={{ y: 0, opacity: 1 }}
-          // transition={{ delay: 0.2, duration: 0.8 }}
+            // initial={{ y: 50, opacity: 0 }}
+            // animate={{ y: 0, opacity: 1 }}
+            // transition={{ delay: 0.2, duration: 0.8 }}
           >
             <h1 className="mb-4 text-6xl font-black tracking-tight text-white md:text-8xl lg:text-9xl">
               <span className="text-[#5c82ff]">TIDE</span>
@@ -84,9 +95,9 @@ export default function Home({ posts, members }: HomeProps) {
             className="mb-16 flex flex-col items-center justify-center gap-4 sm:flex-row"
             initial={false}
             animate={{ y: 0, opacity: 1 }}
-          // initial={{ y: 50, opacity: 0 }}
-          // animate={{ y: 0, opacity: 1 }}
-          // transition={{ delay: 0.4, duration: 0.8 }}
+            // initial={{ y: 50, opacity: 0 }}
+            // animate={{ y: 0, opacity: 1 }}
+            // transition={{ delay: 0.4, duration: 0.8 }}
           >
             <Link
               href="/apply"
@@ -302,9 +313,7 @@ export default function Home({ posts, members }: HomeProps) {
                     </h3>
                     <p className="mb-4 line-clamp-3 text-gray-600 dark:text-gray-300">{summary}</p>
                     <div className="mb-4 flex flex-wrap gap-2">
-                      {tags.slice(0, 3).map((tag) => (
-                        <Tag key={tag} text={tag} />
-                      ))}
+                      {tags?.slice(0, 3).map((tag) => <Tag key={tag} text={tag} />)}
                     </div>
                     <Link
                       href={`/blog/${slug}`}
