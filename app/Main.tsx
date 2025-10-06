@@ -8,6 +8,7 @@ import NewsletterForm from 'pliny/ui/NewsletterForm'
 import InteractiveChart from '@/components/InteractiveChart'
 import { CURRENT_MEMBER_COUNT } from '@/data/memberStats'
 import VideoBackground from '@/components/VideoBackground'
+import MemberCarousel from '@/components/MemberCarousel'
 import { motion } from 'motion/react'
 import { useState, useEffect } from 'react'
 
@@ -226,7 +227,7 @@ export default function Home({ posts }) {
         </div>
       </section> */}
 
-      {/* Community Testimonials Section */}
+      {/* Member Carousel Section */}
       <section className="bg-gradient-to-br from-purple-50 to-blue-50 py-20 dark:from-gray-900 dark:to-gray-800">
         <div className="px-4">
           <motion.div
@@ -237,63 +238,21 @@ export default function Home({ posts }) {
             transition={{ duration: 0.8 }}
           >
             <h2 className="mb-6 text-4xl font-black text-gray-900 md:text-6xl dark:text-white">
-              What Our <span className="text-[#5c82ff]">Community</span> Says
+              Meet Our <span className="text-[#5c82ff]">Community</span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300">
               Real stories from real data scientists, engineers, and ML enthusiasts
             </p>
           </motion.div>
 
-          <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-3">
-            {[
-              {
-                quote:
-                  'TIDE inspires me to improve systems and grow personally. It shows that real change starts with clarity, consistency, and the courage to aim higher than expected.',
-                author: 'Arthur G.',
-                role: 'M.Sc. Information Systems',
-                avatar: '👨🏻‍💻',
-              },
-              {
-                quote:
-                  'My background in mechanical engineering inspires me to build TIDE as a system where I can learn continuously, connect diverse fields, and transform complexity into clarity.',
-                author: 'Tim B.',
-                role: 'M.Sc. Mechanical Engineering',
-                avatar: '👨🏻‍🔧',
-              },
-              {
-                quote:
-                  'My motivation for building TIDE lies in connecting different study fields and disciplines on their common denominator - Data. ',
-                author: 'Luca K.',
-                role: 'M.Sc. Information Systems',
-                avatar: '🧑‍💻',
-              },
-            ].map((testimonial, index) => (
-              <motion.div
-                key={index}
-                className="group"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                whileHover={{ y: -5 }}
-              >
-                <div className="h-full rounded-3xl border border-white/20 bg-white/80 p-8 shadow-xl backdrop-blur-sm transition-all duration-300 group-hover:shadow-2xl dark:border-gray-700/50 dark:bg-gray-800/80">
-                  <div className="mb-6 text-center text-6xl">{testimonial.avatar}</div>
-                  <blockquote className="mb-6 text-gray-700 italic dark:text-gray-300">
-                    "{testimonial.quote}"
-                  </blockquote>
-                  <div className="text-center">
-                    <div className="font-bold text-gray-900 dark:text-white">
-                      {testimonial.author}
-                    </div>
-                    <div className="text-sm text-purple-600 dark:text-purple-400">
-                      {testimonial.role}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <MemberCarousel />
+          </motion.div>
         </div>
       </section>
 
