@@ -65,8 +65,7 @@ export default function MemberCarousel({ members }: MemberCarouselProps) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800" />
+      {/* Background gradient - removed for transparency */}
 
       {/* Member cards */}
       <div className="relative flex h-full items-center justify-center">
@@ -200,7 +199,7 @@ export default function MemberCarousel({ members }: MemberCarouselProps) {
 
       {/* Side navigation arrows */}
       <button
-        className="absolute top-1/2 left-4 z-30 -translate-y-1/2 transform rounded-full bg-white/80 p-3 shadow-lg transition-all duration-300 hover:scale-110 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800"
+        className="absolute top-1/2 left-16 z-30 -translate-y-1/2 transform rounded-full bg-white/80 p-3 shadow-lg transition-all duration-300 hover:scale-110 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800"
         onClick={() => setCurrentIndex((prev) => (prev - 1 + members.length) % members.length)}
       >
         <svg
@@ -214,7 +213,7 @@ export default function MemberCarousel({ members }: MemberCarouselProps) {
       </button>
 
       <button
-        className="absolute top-1/2 right-4 z-30 -translate-y-1/2 transform rounded-full bg-white/80 p-3 shadow-lg transition-all duration-300 hover:scale-110 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800"
+        className="absolute top-1/2 right-16 z-30 -translate-y-1/2 transform rounded-full bg-white/80 p-3 shadow-lg transition-all duration-300 hover:scale-110 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800"
         onClick={() => setCurrentIndex((prev) => (prev + 1) % members.length)}
       >
         <svg
