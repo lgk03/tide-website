@@ -8,7 +8,7 @@ interface Project {
 const projectsData: Project[] = [
   {
     title: 'DB Delay Desktop',
-    description: `We’re analyzing Deutsche Bahn data to explore the current state of Germany’s public transportation infrastructure. Interested? Get in touch at tide.tum@gmail.com.`,
+    description: `We’re analyzing Deutsche Bahn data to explore the current state of Germany’s public transportation infrastructure. Interested? Get in touch at team@tum-tide.com.`,
     imgSrc: '/static/images/deutsche-bahn-verspaetungen-anzeigetafel.jpg',
   },
   // {

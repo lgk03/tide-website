@@ -13,7 +13,7 @@ const siteMetadata = {
   siteLogo: `${process.env.BASE_PATH || ''}/data/tide-logo.svg`,
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
   mastodon: 'https://mastodon.social/@mastodonuser',
-  email: 'tide.tum@gmail.com',
+  email: 'team@tum-tide.com',
   github: 'https://github.com/TUM-Data-Analytics',
   x: 'https://twitter.com/x',
   // twitter: 'https://twitter.com/Twitter',
