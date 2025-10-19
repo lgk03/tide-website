@@ -7,26 +7,17 @@ interface Project {
 
 const projectsData: Project[] = [
   {
-    title: 'DB Delay Desktop',
-    description: `We’re analyzing Deutsche Bahn data to explore the current state of Germany’s public transportation infrastructure. Interested? Get in touch at team@tum-tide.com.`,
+    title: 'Munich Mobility Insights',
+    description: `We are analyzing comprehensive data from Munich's public transportation network (MVG) to explore the current state of urban mobility. Our focus is on modeling real-time transit patterns to identify bottlenecks and understand delay dynamics. This research aims to uncover insights that could pave the way for a more efficient and reliable public transport system.\n\nInterested? Get in touch at team@tum-tide.com.`,
     imgSrc: '/static/images/deutsche-bahn-verspaetungen-anzeigetafel.jpg',
+    // href: '/blog/the-time-machine || https://www.google.com' => insert blog article or user interface once we have something
   },
-  // {
-  //   title: 'A Search Engine',
-  //   description: `What if you could look up any information in the world? Webpages, images, videos
-  //   and more. Google has many features to help you find exactly what you're looking
-  //   for.`,
-  //   imgSrc: '/static/images/google.png',
-  //   href: 'https://www.google.com',
-  // },
-  // {
-  //   title: 'The Time Machine',
-  //   description: `Imagine being able to travel back in time or to the future. Simple turn the knob
-  //   to the desired date and press "Go". No more worrying about lost keys or
-  //   forgotten headphones with this simple yet affordable solution.`,
-  //   imgSrc: '/static/images/time-machine.jpg',
-  //   href: '/blog/the-time-machine',
-  // },
+  {
+    title: 'Smart Building Digital Twin',
+    description: `In collaboration with an MIT-based stealth startup, we are exploring the development of advanced digital twins for building infrastructure. Our focus is on creating sophisticated models to analyze and simulate complex internal systems, paving the way for smarter infrastructure management. Interested? Get in touch at team@tum-tide.com.`,
+    imgSrc: '/static/images/smart-building-analytics.jpg',
+    // href: '/blog/the-time-machine || https://www.google.com' => insert blog article or user interface once we have something
+  },
 ]
 
 export default projectsData
