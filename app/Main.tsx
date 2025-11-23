@@ -81,11 +81,11 @@ export default function Home({ posts, members }: HomeProps) {
             <h1 className="mb-4 text-6xl font-black tracking-tight text-white md:text-8xl lg:text-9xl">
               <span className="text-[#5c82ff]">TIDE</span>
             </h1>
-            <p className="mb-6 text-lg font-bold tracking-wide text-white/80 md:text-xl">
+            {/* <p className="mb-6 text-lg font-bold tracking-wide text-white/80 md:text-xl">
               TUM Initiative for Data Excellence
-            </p>
+            </p> */}
             <p className="mx-auto mb-8 max-w-4xl text-xl leading-relaxed text-white/90 md:text-2xl">
-              TUM's most <span className="font-bold text-[#5c82ff]">innovative</span> data science
+              Munich's most <span className="font-bold text-[#5c82ff]">innovative</span> data science
               community.<br></br> Where students turn{' '}
               <span className="font-bold text-pink-300">data into magic</span> ✨
             </p>
