@@ -153,7 +153,7 @@ export default function HackathonPage() {
       </section>
 
       <section className="py-10">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2">
           <div className="p-8 rounded-xl glass animated-outline flex items-center justify-center text-center transform transition-all duration-500 hover:scale-105">
             <div>
               <h3 className="text-2xl md:text-3xl font-extrabold">Your Benefits</h3>
@@ -207,7 +207,7 @@ export default function HackathonPage() {
               </svg>
             </div>
             <h4 className="font-bold text-lg">Compete for Prizes</h4>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">€2,000+ per challenge plus goodies and exclusive perks for top teams.</p>
+            <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">€3,000+ per challenge plus goodies and exclusive perks for top teams.</p>
           </div>
         </div>
       </section>
