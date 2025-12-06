@@ -85,8 +85,8 @@ export default function Home({ posts, members }: HomeProps) {
               TUM Initiative for Data Excellence
             </p> */}
             <p className="mx-auto mb-8 max-w-4xl text-xl leading-relaxed text-white/90 md:text-2xl">
-              Munich's most <span className="font-bold text-[#5c82ff]">innovative</span> data science
-              community.<br></br> Where students turn{' '}
+              Munich's most <span className="font-bold text-[#5c82ff]">innovative</span> data
+              science community.<br></br> Where students turn{' '}
               <span className="font-bold text-pink-300">data into magic</span> ✨
             </p>
           </motion.div>
