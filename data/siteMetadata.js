@@ -1,7 +1,7 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
   title: 'TIDE',
-  author: 'TIDE',
+  author: 'TIDE - Student Initiative',
   headerTitle: 'TIDE',
   description:
     'TIDE is the Data Excellence Student Club at TUM. We are a group of students interested in data engineering/science, machine learning and related topics.',
