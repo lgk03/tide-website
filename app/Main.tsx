@@ -313,7 +313,9 @@ export default function Home({ posts, members }: HomeProps) {
                     </h3>
                     <p className="mb-4 line-clamp-3 text-gray-600 dark:text-gray-300">{summary}</p>
                     <div className="mb-4 flex flex-wrap gap-2">
-                      {tags?.slice(0, 3).map((tag) => <Tag key={tag} text={tag} />)}
+                      {tags?.slice(0, 3).map((tag) => (
+                        <Tag key={tag} text={tag} />
+                      ))}
                     </div>
                     <Link
                       href={`/blog/${slug}`}
