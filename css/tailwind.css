@@ -194,15 +194,30 @@ input:-webkit-autofill:focus {
 
 /* Glassmorphism effect */
 .glass {
-  background: rgba(255, 255, 255, 0.1);
+  /* Light-mode glass: subtle white card on white background with faint border */
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Dark-mode override when the site has a `.dark` root class */
+.dark .glass {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .glass-dark {
-  background: rgba(0, 0, 0, 0.1);
+  /* Explicit dark glass variant for panels that should stay darker */
+  background: rgba(0, 0, 0, 0.12);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Ensure light-mode fallback for .glass-dark when not in dark mode */
+.glass-dark:not(.dark *) {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 /* Animated gradient text */
@@ -328,4 +343,55 @@ html {
 /* IE and Edge */
 html {
   -ms-overflow-style: none;
+}
+
+/* Animated border beam effect - light travels around the border */
+.animated-outline {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.animated-outline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 2px;
+  background: linear-gradient(90deg, #5c82ff, #f9a8d4, #5c82ff);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  border-radius: inherit;
+  animation: beam-animation 3s linear infinite;
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes beam-animation {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
+.animated-outline::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-outline::before {
+    animation: none;
+    opacity: 0.4;
+  }
 }
