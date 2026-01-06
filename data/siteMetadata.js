@@ -1,10 +1,10 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
   title: 'TIDE',
-  author: 'TUM Initiative for Data Excellence',
+  author: 'TIDE - Student Initiative',
   headerTitle: 'TIDE',
   description:
-    'TIDE (TUM Initiative for Data Excellence) is the Data Excellence Student Club at TUM. We are a group of students interested in data engineering/science, machine learning and related topics.',
+    'TIDE is the Data Excellence Student Club at TUM. We are a group of students interested in data engineering/science, machine learning and related topics.',
 
   language: 'en-us',
   theme: 'system', // system, dark or light
@@ -14,12 +14,12 @@ const siteMetadata = {
   socialBanner: `data/tide-logo.svg`,
   mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'team@tum-tide.com',
-  github: 'https://github.com/TUM-Data-Analytics',
+  github: 'https://github.com/TIDE',
   x: 'https://twitter.com/x',
   // twitter: 'https://twitter.com/Twitter',
   facebook: 'https://facebook.com',
   youtube: 'https://youtube.com',
-  linkedin: 'https://www.linkedin.com/company/tidetum/',
+  linkedin: 'https://www.linkedin.com/company/tide-club/',
   threads: 'https://www.threads.net',
   instagram: 'https://www.instagram.com',
   medium: 'https://medium.com',

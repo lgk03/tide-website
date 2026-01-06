@@ -8,11 +8,11 @@ export default function Footer() {
     <footer>
       <div className="mt-16 flex flex-col items-center">
         <div className="mb-3 flex space-x-4">
-          <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size={6} />
-          <SocialIcon kind="github" href={siteMetadata.github} size={6} />
+          {/* <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size={6} /> */}
+          {/* <SocialIcon kind="github" href={siteMetadata.github} size={6} /> */}
           {/* <SocialIcon kind="facebook" href={siteMetadata.facebook} size={6} /> */}
           {/* <SocialIcon kind="youtube" href={siteMetadata.youtube} size={6} /> */}
-          <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={6} />
+          {/* <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={6} /> */}
           {/* <SocialIcon kind="twitter" href={siteMetadata.twitter} size={6} /> */}
           {/* <SocialIcon kind="bluesky" href={siteMetadata.bluesky} size={6} /> */}
           {/* <SocialIcon kind="x" href={siteMetadata.x} size={6} /> */}
@@ -28,16 +28,7 @@ export default function Footer() {
           {/* <Link href="/">{siteMetadata.title}</Link> */}
         </div>
         <div className="mb-8 flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
-          <span>Accredited by</span>
-          <Link href="https://www.tum.de" className="transition-opacity hover:opacity-80">
-            <Image
-              src="/static/images/tum.svg"
-              alt="TUM Logo"
-              width={60}
-              height={20}
-              className="h-5 w-auto"
-            />
-          </Link>
+          <span>Accredited by the Student Representation at the Technical University Munich</span>
         </div>
       </div>
     </footer>
