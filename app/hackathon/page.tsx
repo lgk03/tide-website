@@ -1,7 +1,7 @@
 import { genPageMetadata } from 'app/seo'
 
 export const metadata = genPageMetadata({
-  title: 'Hackathon — Maintenance: Water · Energy · Wildcard',
+  title: 'Hackathon — Maintenance: Energy · Water · Wildcard',
 })
 
 export default function HackathonPage() {
@@ -9,15 +9,50 @@ export default function HackathonPage() {
     <div className="divide-y divide-gray-200 dark:divide-gray-700">
       <header className="space-y-2 pt-6 pb-8 md:space-y-5">
         <h1 className="gradient-text text-3xl leading-9 font-extrabold tracking-tight sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-          Hackathon: Maintenance for a Circular Future
+          Hackathon: Sustainability for Infrastructure
         </h1>
-        Join a hackathon solving real-world maintenance challenges in water, energy and circular
+        Join a hackathon solving real-world sustainability challenges in energy, water and circular
         systems. Partner with high-growth circular startups and support student teams building
         software that keeps critical systems running longer and more efficiently.
       </header>
 
       <section className="py-10">
         <div className="grid gap-6 md:grid-cols-3">
+          <article className="glass transform rounded-xl p-6 transition-all duration-500 hover:scale-105 hover:shadow-lg">
+            <div className="flex items-center space-x-4">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-yellow-100 text-yellow-700">
+                <svg
+                  className="h-8 w-8"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                    stroke="currentColor"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold">Energy - Management & Infrastructure</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  Develop software for efficient grid management, smart charging, and infrastructure
+                  optimization.
+                </p>
+              </div>
+            </div>
+            <div className="prose dark:prose-invert mt-4 max-w-none">
+              <ul>
+                <li>Grid load balancing</li>
+                <li>Smart charging systems</li>
+                <li>Infrastructure efficiency tracking</li>
+              </ul>
+            </div>
+          </article>
+
           <article className="glass float transform rounded-xl p-6 transition-all duration-500 hover:scale-105 hover:shadow-lg">
             <div className="flex items-center space-x-4">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-700">
@@ -56,41 +91,6 @@ export default function HackathonPage() {
                 <li>Leak detection dashboards</li>
                 <li>Smart scheduling algorithms</li>
                 <li>Remote diagnostics & monitoring</li>
-              </ul>
-            </div>
-          </article>
-
-          <article className="glass transform rounded-xl p-6 transition-all duration-500 hover:scale-105 hover:shadow-lg">
-            <div className="flex items-center space-x-4">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-yellow-100 text-yellow-700">
-                <svg
-                  className="h-8 w-8"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
-                    stroke="currentColor"
-                  />
-                </svg>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold">Energy - Management & Infrastructure</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  Develop software for efficient grid management, smart charging, and infrastructure
-                  optimization.
-                </p>
-              </div>
-            </div>
-            <div className="prose dark:prose-invert mt-4 max-w-none">
-              <ul>
-                <li>Grid load balancing</li>
-                <li>Smart charging systems</li>
-                <li>Infrastructure efficiency tracking</li>
               </ul>
             </div>
           </article>
@@ -140,24 +140,7 @@ export default function HackathonPage() {
         </p>
 
         <div className="grid gap-8 md:grid-cols-3">
-          <div className="space-y-4">
-            <div className="glass animated-outline rounded-lg border-l-4 border-blue-500 p-4">
-              <h4 className="text-lg font-bold">Water Challenge</h4>
-              <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-                Build predictive or monitoring software for irrigation systems, leak detection, or
-                water infrastructure.
-              </p>
-            </div>
-            <div className="glass-dark rounded-lg p-4">
-              <p className="text-xs font-semibold text-gray-400 uppercase">Startup Mentor</p>
-              <p className="mt-1 text-sm font-medium">Circular Water Startup</p>
-            </div>
-            <div className="glass-dark rounded-lg p-4">
-              <p className="text-xs font-semibold text-gray-400 uppercase">Industry Expert</p>
-              <p className="mt-1 text-sm font-medium">Global Water Infrastructure Player</p>
-            </div>
-          </div>
-
+          {/* Energy Detail (Now First) */}
           <div className="space-y-4">
             <div className="glass animated-outline rounded-lg border-l-4 border-yellow-500 p-4">
               <h4 className="text-lg font-bold">Energy Challenge</h4>
@@ -173,6 +156,25 @@ export default function HackathonPage() {
             <div className="glass-dark rounded-lg p-4">
               <p className="text-xs font-semibold text-gray-400 uppercase">Industry Expert</p>
               <p className="mt-1 text-sm font-medium">Major Energy Infrastructure Provider</p>
+            </div>
+          </div>
+
+          {/* Water Detail (Now Second) */}
+          <div className="space-y-4">
+            <div className="glass animated-outline rounded-lg border-l-4 border-blue-500 p-4">
+              <h4 className="text-lg font-bold">Water Challenge</h4>
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                Build predictive or monitoring software for irrigation systems, leak detection, or
+                water infrastructure.
+              </p>
+            </div>
+            <div className="glass-dark rounded-lg p-4">
+              <p className="text-xs font-semibold text-gray-400 uppercase">Startup Mentor</p>
+              <p className="mt-1 text-sm font-medium">Circular Water Startup</p>
+            </div>
+            <div className="glass-dark rounded-lg p-4">
+              <p className="text-xs font-semibold text-gray-400 uppercase">Industry Expert</p>
+              <p className="mt-1 text-sm font-medium">Global Water Infrastructure Player</p>
             </div>
           </div>
 
@@ -195,6 +197,7 @@ export default function HackathonPage() {
         </div>
       </section>
 
+      {/* ... rest of the component (Sponsors, Schedule, etc.) remains unchanged ... */}
       <section className="py-10">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div className="glass animated-outline flex transform items-center justify-center rounded-xl p-8 text-center transition-all duration-500 hover:scale-105">
