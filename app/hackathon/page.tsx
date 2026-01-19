@@ -18,7 +18,6 @@ export default function HackathonPage() {
 
       <section className="py-10">
         <div className="grid gap-6 md:grid-cols-3">
-          {/* Energy Challenge - NOW MOVING (added 'float') */}
           <article className="glass float transform rounded-xl p-6 transition-all duration-500 hover:scale-105 hover:shadow-lg">
             <div className="flex items-center space-x-4">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-yellow-100 text-yellow-700">
@@ -38,7 +37,7 @@ export default function HackathonPage() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-xl font-semibold">Energy - Management & Infrastructure</h3>
+                <h3 className="text-xl font-semibold">Energy - Infrastructure</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-300">
                   Develop software for efficient grid management, smart charging, and infrastructure
                   optimization.
@@ -54,7 +53,6 @@ export default function HackathonPage() {
             </div>
           </article>
 
-          {/* Water Challenge - NOW STATIC (removed 'float') */}
           <article className="glass transform rounded-xl p-6 transition-all duration-500 hover:scale-105 hover:shadow-lg">
             <div className="flex items-center space-x-4">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-700">
@@ -81,7 +79,7 @@ export default function HackathonPage() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-xl font-semibold">Water - Irrigation & Infrastructure</h3>
+                <h3 className="text-xl font-semibold">Water - Infrastructure</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-300">
                   Build predictive maintenance and monitoring software for irrigation systems and
                   water infrastructure.
@@ -97,7 +95,6 @@ export default function HackathonPage() {
             </div>
           </article>
 
-          {/* Wildcard Challenge - STILL MOVING (kept 'float') */}
           <article className="glass float transform rounded-xl p-6 transition-all duration-500 hover:scale-105 hover:shadow-lg">
             <div className="flex items-center space-x-4">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-purple-100 text-purple-700">
