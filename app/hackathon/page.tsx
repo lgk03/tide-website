@@ -18,7 +18,8 @@ export default function HackathonPage() {
 
       <section className="py-10">
         <div className="grid gap-6 md:grid-cols-3">
-          <article className="glass transform rounded-xl p-6 transition-all duration-500 hover:scale-105 hover:shadow-lg">
+          {/* Energy Challenge - NOW MOVING (added 'float') */}
+          <article className="glass float transform rounded-xl p-6 transition-all duration-500 hover:scale-105 hover:shadow-lg">
             <div className="flex items-center space-x-4">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-yellow-100 text-yellow-700">
                 <svg
@@ -53,7 +54,8 @@ export default function HackathonPage() {
             </div>
           </article>
 
-          <article className="glass float transform rounded-xl p-6 transition-all duration-500 hover:scale-105 hover:shadow-lg">
+          {/* Water Challenge - NOW STATIC (removed 'float') */}
+          <article className="glass transform rounded-xl p-6 transition-all duration-500 hover:scale-105 hover:shadow-lg">
             <div className="flex items-center space-x-4">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-700">
                 <svg
@@ -95,6 +97,7 @@ export default function HackathonPage() {
             </div>
           </article>
 
+          {/* Wildcard Challenge - STILL MOVING (kept 'float') */}
           <article className="glass float transform rounded-xl p-6 transition-all duration-500 hover:scale-105 hover:shadow-lg">
             <div className="flex items-center space-x-4">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-purple-100 text-purple-700">
