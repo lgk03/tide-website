@@ -37,7 +37,7 @@ export default function HackathonPage() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-xl font-semibold">Energy - Infrastructure</h3>
+                <h3 className="text-xl font-semibold">Energy - Management & Infrastructure</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-300">
                   Develop software for efficient grid management, smart charging, and infrastructure
                   optimization.
@@ -79,7 +79,7 @@ export default function HackathonPage() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-xl font-semibold">Water - Infrastructure</h3>
+                <h3 className="text-xl font-semibold">Water - Irrigation & Infrastructure</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-300">
                   Build predictive maintenance and monitoring software for irrigation systems and
                   water infrastructure.
@@ -129,6 +129,52 @@ export default function HackathonPage() {
               </ul>
             </div>
           </article>
+        </div>
+      </section>
+
+      <section className="py-10">
+        <h2 className="mb-6 text-2xl font-bold">Software Challenges</h2>
+        <div className="grid gap-8 md:grid-cols-3">
+          <div className="space-y-4">
+            <div className="glass animated-outline rounded-lg border-l-4 border-yellow-500 p-4">
+              <h4 className="text-lg font-bold">Energy Challenge</h4>
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                Create dashboards and algorithms for energy management, grid efficiency, or smart
+                infrastructure.
+              </p>
+            </div>
+            <div className="glass-dark rounded-lg p-4">
+              <p className="text-xs font-semibold text-gray-400 uppercase">Startup Mentor</p>
+              <p className="mt-1 text-sm font-medium">Energy Management Startup</p>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <div className="glass animated-outline rounded-lg border-l-4 border-blue-500 p-4">
+              <h4 className="text-lg font-bold">Water Challenge</h4>
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                Build predictive or monitoring software for irrigation systems, leak detection, or
+                water infrastructure.
+              </p>
+            </div>
+            <div className="glass-dark rounded-lg p-4">
+              <p className="text-xs font-semibold text-gray-400 uppercase">Startup Mentor</p>
+              <p className="mt-1 text-sm font-medium">Circular Water Startup</p>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <div className="glass animated-outline rounded-lg border-l-4 border-purple-500 p-4">
+              <h4 className="text-lg font-bold">Wildcard Challenge</h4>
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                Build any solution that closes the loop, optimizes resources, or reduces waste.
+              </p>
+            </div>
+            <div className="glass-dark rounded-lg p-4">
+              <p className="text-xs font-semibold text-gray-400 uppercase">Startup Mentor</p>
+              <p className="mt-1 text-sm font-medium">Circular Economy Startup</p>
+            </div>
+          </div>
         </div>
       </section>
 
