@@ -12,6 +12,7 @@ import MemberCarousel from '@/components/MemberCarousel'
 import { Member } from '../lib/members'
 import { motion } from 'motion/react'
 import { useState, useEffect } from 'react'
+import eventsData from '@/data/eventsData'
 
 const MAX_DISPLAY = 3
 // const BACKGROUND_VIDEO = '/static/videos/water_drops.mp4'
@@ -78,16 +79,15 @@ export default function Home({ posts, members }: HomeProps) {
             // animate={{ y: 0, opacity: 1 }}
             // transition={{ delay: 0.2, duration: 0.8 }}
           >
-            <h1 className="mb-4 text-6xl font-black tracking-tight text-white md:text-8xl lg:text-9xl">
+            <h1 className="mb-6 text-8xl font-black tracking-tight text-white md:text-[10rem] lg:text-[13rem]">
               <span className="text-[#5c82ff]">TIDE</span>
             </h1>
             {/* <p className="mb-6 text-lg font-bold tracking-wide text-white/80 md:text-xl">
               TUM Initiative for Data Excellence
             </p> */}
-            <p className="mx-auto mb-8 max-w-4xl text-xl leading-relaxed text-white/90 md:text-2xl">
-              Munich's most <span className="font-bold text-[#5c82ff]">innovative</span> data
-              science community.<br></br> Where students turn{' '}
-              <span className="font-bold text-pink-300">data into magic</span> ✨
+            <p className="mx-auto mb-10 max-w-5xl text-2xl leading-relaxed text-white/90 md:text-4xl">
+              Where <span className="font-bold text-[#5c82ff]">real world</span> data problems meet{' '}
+              <span className="font-bold text-[#5c82ff]">students</span>
             </p>
           </motion.div>
 
@@ -101,13 +101,13 @@ export default function Home({ posts, members }: HomeProps) {
           >
             <Link
               href="/apply"
-              className="transform rounded-full border-2 border-white px-8 py-4 font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#5c82ff]"
+              className="transform rounded-full border-2 border-white px-12 py-5 text-xl font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#5c82ff]"
             >
-              Join Us 🚀
+              Join Us
             </Link>
             <Link
               href="/events"
-              className="transform rounded-full border-2 border-white px-8 py-4 font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#5c82ff]"
+              className="transform rounded-full border-2 border-white px-12 py-5 text-xl font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#5c82ff]"
             >
               Explore Events
             </Link>
@@ -177,7 +177,7 @@ export default function Home({ posts, members }: HomeProps) {
               },
               {
                 title: 'Data Engineering',
-                description: 'Pipelines so smooth they make data scientists cry tears of joy',
+                description: 'Designing robust pipelines that power real-world applications',
                 icon: '⚡',
                 color: 'from-[#5c82ff] to-pink-300',
               },
@@ -255,10 +255,10 @@ export default function Home({ posts, members }: HomeProps) {
             transition={{ duration: 0.8 }}
           >
             <h2 className="mb-6 text-4xl font-black text-gray-900 md:text-6xl dark:text-white">
-              Meet Our <span className="text-[#5c82ff]">Community</span>
+              Meet Our <span className="text-[#5c82ff]">Team</span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300">
-              A collective of learners, builders, and data enthusiasts.
+              A collective of learners, builders, and data enthusiasts
             </p>
           </motion.div>
 
@@ -273,7 +273,7 @@ export default function Home({ posts, members }: HomeProps) {
         </div>
       </section>
 
-      {/* Latest Posts Section */}
+      {/* Upcoming Events Section */}
       <section className="bg-white py-20 dark:bg-gray-800">
         <div className="px-4">
           <motion.div
@@ -284,44 +284,43 @@ export default function Home({ posts, members }: HomeProps) {
             transition={{ duration: 0.8 }}
           >
             <h2 className="mb-6 text-4xl font-black text-gray-900 md:text-6xl dark:text-white">
-              Latest <span className="text-[#5c82ff]">Insights</span>
+              Upcoming <span className="text-[#5c82ff]">Events</span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300">
-              Fresh takes on data science, ML, and everything in between
+              Join us at our next events and be part of the community
             </p>
           </motion.div>
 
           <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-3">
-            {posts.slice(0, MAX_DISPLAY).map((post, index) => {
-              const { slug, date, title, summary, tags } = post
-              return (
-                <motion.article
-                  key={slug}
-                  className="group"
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: index * 0.2 }}
-                  whileHover={{ y: -5 }}
-                >
-                  <div className="h-full rounded-2xl border border-gray-200 bg-gray-50 p-6 transition-all duration-300 group-hover:shadow-xl dark:border-gray-700 dark:bg-gray-900">
-                    <div className="mb-3 text-sm font-medium text-purple-600 dark:text-purple-400">
-                      {formatDate(date, siteMetadata.locale)}
-                    </div>
-                    <h3 className="mb-4 text-xl font-bold text-gray-900 transition-colors group-hover:text-purple-600 dark:text-white dark:group-hover:text-purple-400">
-                      <Link href={`/blog/${slug}`}>{title}</Link>
-                    </h3>
-                    <p className="mb-4 line-clamp-3 text-gray-600 dark:text-gray-300">{summary}</p>
-                    <div className="mb-4 flex flex-wrap gap-2">
-                      {tags?.slice(0, 3).map((tag) => (
-                        <Tag key={tag} text={tag} />
-                      ))}
-                    </div>
+            {eventsData.slice(0, MAX_DISPLAY).map((event, index) => (
+              <motion.article
+                key={event.title}
+                className="group"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                whileHover={{ y: -5 }}
+              >
+                <div className="h-full rounded-2xl border border-gray-200 bg-gray-50 p-6 transition-all duration-300 group-hover:shadow-xl dark:border-gray-700 dark:bg-gray-900">
+                  <div className="mb-3 text-sm font-medium text-[#5c82ff]">
+                    {event.displayDate || event.date}
+                  </div>
+                  <h3 className="mb-4 text-xl font-bold text-gray-900 transition-colors group-hover:text-[#5c82ff] dark:text-white">
+                    {event.href ? <Link href={event.href}>{event.title}</Link> : event.title}
+                  </h3>
+                  <p className="mb-4 line-clamp-3 text-gray-600 dark:text-gray-300">
+                    {event.description}
+                  </p>
+                  <div className="mb-4 text-sm text-gray-500 dark:text-gray-400">
+                    {event.location}
+                  </div>
+                  {event.href && (
                     <Link
-                      href={`/blog/${slug}`}
-                      className="inline-flex items-center font-medium text-purple-600 transition-colors hover:text-purple-800 dark:text-purple-400 dark:hover:text-purple-300"
+                      href={event.href}
+                      className="inline-flex items-center font-medium text-[#5c82ff] transition-colors hover:text-blue-700 dark:hover:text-blue-300"
                     >
-                      Read more
+                      Learn more
                       <svg
                         className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
                         fill="none"
@@ -336,98 +335,59 @@ export default function Home({ posts, members }: HomeProps) {
                         />
                       </svg>
                     </Link>
-                  </div>
-                </motion.article>
-              )
-            })}
+                  )}
+                </div>
+              </motion.article>
+            ))}
           </div>
-
-          {posts.length > MAX_DISPLAY && (
-            <motion.div
-              className="mt-12 text-center"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <Link
-                href="/blog"
-                className="inline-flex transform items-center rounded-full bg-gradient-to-r from-purple-600 to-pink-600 px-8 py-4 font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:from-purple-700 hover:to-pink-700"
-              >
-                Explore All Posts
-                <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </Link>
-            </motion.div>
-          )}
         </div>
       </section>
 
       {/* Join Us CTA Section */}
-      <section className="relative overflow-hidden bg-gray-900 py-20">
-        <VideoBackground src={BACKGROUND_VIDEO} opacity="opacity-30" overlay={false}>
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-gray-900/80" />
-          {/* Subtle gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-pink-600/10" />
-        </VideoBackground>
-
-        <div className="relative z-10 px-4 text-center">
+      <section className="bg-gray-50 py-20 dark:bg-gray-900">
+        <div className="px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="mb-6 text-4xl font-black text-white md:text-6xl">
-              Ready to Join the <span className="gradient-text">Data Revolution</span>?
+            <h2 className="mb-12 text-4xl font-black text-gray-900 md:text-6xl dark:text-white">
+              Interested in <span className="text-[#5c82ff]">working with us</span>?
             </h2>
-            <p className="mx-auto mb-12 max-w-4xl text-xl text-gray-300">
-              Whether you're a complete beginner or a seasoned pro, there's a place for you in our
-              community. Let's build the future of data science together! 🚀
-            </p>
 
-            <div className="mx-auto mb-12 grid max-w-5xl gap-8 md:grid-cols-2">
-              <motion.div
-                className="rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-sm"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="mb-4 text-4xl">🎓</div>
-                <h3 className="mb-2 text-xl font-bold text-white">For Students</h3>
-                <p className="text-gray-300">Learn, grow, and network with like-minded peers</p>
-              </motion.div>
-
-              <motion.div
-                className="rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-sm"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="mb-4 text-4xl">💼</div>
-                <h3 className="mb-2 text-xl font-bold text-white">For Professionals</h3>
-                <p className="text-gray-300">Share knowledge and mentor the next generation</p>
-              </motion.div>
-            </div>
-
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
-                href="/apply"
-                className="transform rounded-full border-2 border-white px-10 py-4 text-lg font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#5c82ff]"
-              >
-                Apply Now 🎯
+            <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-2">
+              <Link href="/apply">
+                <motion.div
+                  className="cursor-pointer rounded-2xl border border-gray-200 bg-white p-6 shadow-xl transition-all duration-300 hover:shadow-2xl dark:border-gray-700 dark:bg-gray-800"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="mb-4 text-4xl">🎓</div>
+                  <h3 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
+                    For Students
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Learn, grow, and network with like-minded peers
+                  </p>
+                </motion.div>
               </Link>
-              <Link
-                href="/events"
-                className="transform rounded-full border-2 border-white px-10 py-4 text-lg font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#5c82ff]"
-              >
-                Attend an Event
-              </Link>
+
+              <a href="mailto:team@tum-tide.com">
+                <motion.div
+                  className="cursor-pointer rounded-2xl border border-gray-200 bg-white p-6 shadow-xl transition-all duration-300 hover:shadow-2xl dark:border-gray-700 dark:bg-gray-800"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="mb-4 text-4xl">💼</div>
+                  <h3 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
+                    For Professionals
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Share knowledge and mentor the next generation
+                  </p>
+                </motion.div>
+              </a>
             </div>
           </motion.div>
         </div>
