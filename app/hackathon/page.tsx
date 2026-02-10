@@ -18,7 +18,7 @@ export default function HackathonPage() {
 
       <section className="py-10">
         <div className="grid gap-6 md:grid-cols-3">
-          {/* Energy Challenge - NOW MOVING (added 'float') */}
+          {/* Energy Challenge */}
           <article className="glass float transform rounded-xl p-6 transition-all duration-500 hover:scale-105 hover:shadow-lg">
             <div className="flex items-center space-x-4">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-yellow-100 text-yellow-700">
@@ -54,7 +54,7 @@ export default function HackathonPage() {
             </div>
           </article>
 
-          {/* Water Challenge - NOW STATIC (removed 'float') */}
+          {/* Water Challenge */}
           <article className="glass transform rounded-xl p-6 transition-all duration-500 hover:scale-105 hover:shadow-lg">
             <div className="flex items-center space-x-4">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-700">
@@ -97,7 +97,7 @@ export default function HackathonPage() {
             </div>
           </article>
 
-          {/* Wildcard Challenge - STILL MOVING (kept 'float') */}
+          {/* Wildcard Challenge */}
           <article className="glass float transform rounded-xl p-6 transition-all duration-500 hover:scale-105 hover:shadow-lg">
             <div className="flex items-center space-x-4">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-purple-100 text-purple-700">
@@ -143,7 +143,7 @@ export default function HackathonPage() {
         </p>
 
         <div className="grid gap-8 md:grid-cols-3">
-          {/* Energy Detail (Now First) */}
+          {/* Energy Detail */}
           <div className="space-y-4">
             <div className="glass animated-outline rounded-lg border-l-4 border-yellow-500 p-4">
               <h4 className="text-lg font-bold">Energy Challenge</h4>
@@ -162,7 +162,7 @@ export default function HackathonPage() {
             </div>
           </div>
 
-          {/* Water Detail (Now Second) */}
+          {/* Water Detail */}
           <div className="space-y-4">
             <div className="glass animated-outline rounded-lg border-l-4 border-blue-500 p-4">
               <h4 className="text-lg font-bold">Water Challenge</h4>
@@ -181,6 +181,7 @@ export default function HackathonPage() {
             </div>
           </div>
 
+          {/* Wildcard Detail */}
           <div className="space-y-4">
             <div className="glass animated-outline rounded-lg border-l-4 border-purple-500 p-4">
               <h4 className="text-lg font-bold">Wildcard Challenge</h4>
@@ -200,7 +201,6 @@ export default function HackathonPage() {
         </div>
       </section>
 
-      {/* ... rest of the component (Sponsors, Schedule, etc.) remains unchanged ... */}
       <section className="py-10">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div className="glass animated-outline flex transform items-center justify-center rounded-xl p-8 text-center transition-all duration-500 hover:scale-105">
