@@ -21,7 +21,7 @@ export default function AuthorLayout({ children, content, title }: Props) {
           </h1>
         </div>
         <div className="items-start space-y-2 xl:grid xl:grid-cols-2 xl:space-y-0 xl:gap-x-8">
-          <div className="prose dark:prose-invert max-w-none pt-8 pb-8 xl:col-span-2">
+          <div className="prose dark:prose-invert max-w-none pt-8 pb-8 text-justify xl:col-span-2">
             {children}
           </div>
         </div>

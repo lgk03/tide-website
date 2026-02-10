@@ -3,7 +3,6 @@ import headerNavLinks from '@/data/headerNavLinks'
 import Link from './Link'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
-import SearchButton from './SearchButton'
 import TideLogo from '@/data/tide-logo.svg'
 
 interface HeaderProps {
@@ -57,7 +56,6 @@ const Header = ({ isHomepage = false }: HeaderProps) => {
               </Link>
             ))}
         </div>
-        <SearchButton isHomepage={isHomepage} />
         <ThemeSwitch isHomepage={isHomepage} />
         <MobileNav isHomepage={isHomepage} />
       </div>
