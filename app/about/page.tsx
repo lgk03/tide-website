@@ -21,10 +21,12 @@ export default function Page() {
         <MDXLayoutRenderer code={author.body.code} />
       </AuthorLayout>
       <Timeline data={timelineData} />
-      <AuthorLayout content={mainContent} title={'Why Join?'}>
+      <AuthorLayout content={mainContent} title={'Why Join Us?'}>
         <MDXLayoutRenderer code={why.body.code} />
       </AuthorLayout>
-      <ApplyNowButton href="/apply" />
+      <div className="flex justify-center py-8">
+        <ApplyNowButton href="/apply" />
+      </div>
     </>
   )
 }
