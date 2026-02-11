@@ -24,6 +24,11 @@ function formatDate(dateStr: string): string {
   return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
 }
 
+function formatShortDate(dateStr: string): string {
+  const [year, month] = dateStr.split('-')
+  return `${month}/${year.slice(2)}`
+}
+
 const statusConfig: Record<ProjectStatus, { label: string; icon: string; color: string }> = {
   planned: {
     label: 'Planned',
@@ -47,10 +52,13 @@ function ProjectTimelineEntry({ project }: { project: Project }) {
   const status = statusConfig[project.status]
 
   return (
-    <div className="group relative flex gap-6 pb-12 md:gap-10">
+    <div className="group relative flex gap-3 pb-12 md:gap-10">
       {/* Date label */}
-      <div className="flex w-28 shrink-0 flex-col items-end pt-1 md:w-36">
-        <span className="text-primary-500 text-sm font-semibold md:text-base">
+      <div className="flex w-14 shrink-0 flex-col items-end pt-1 md:w-36">
+        <span className="text-primary-500 text-sm font-semibold md:hidden">
+          {formatShortDate(project.date)}
+        </span>
+        <span className="text-primary-500 hidden text-sm font-semibold md:block md:text-base">
           {formatDate(project.date)}
         </span>
       </div>
@@ -71,10 +79,17 @@ function ProjectTimelineEntry({ project }: { project: Project }) {
         >
           {/* Summary — always visible */}
           <div className="p-5 md:p-6">
-            <div className="mb-2">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
+            <div className="mb-2 flex flex-wrap items-start justify-between gap-y-2">
+              <h3 className="mr-2 text-xl font-bold text-gray-900 dark:text-gray-100">
                 {project.title}
               </h3>
+              <span
+                className={`inline-flex shrink-0 items-center justify-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-medium ${status.color} border-current/20 bg-current/5`}
+                title={status.label}
+              >
+                <span className="text-[10px]">{status.icon}</span>
+                {status.label}
+              </span>
             </div>
             <p className="text-sm text-gray-500 dark:text-gray-400">{project.summary}</p>
             <span className="mt-2 block text-xs text-gray-400 dark:text-gray-500">
@@ -120,13 +135,6 @@ function ProjectTimelineEntry({ project }: { project: Project }) {
             )}
           </AnimatePresence>
         </button>
-        <span
-          className={`mt-1.5 inline-flex w-24 shrink-0 items-center justify-center gap-1 rounded-full border px-2.5 py-1 text-xs font-medium ${status.color} border-current/20 bg-current/5`}
-          title={status.label}
-        >
-          <span className="text-[10px]">{status.icon}</span>
-          {status.label}
-        </span>
       </div>
     </div>
   )
@@ -136,7 +144,7 @@ export default function ProjectTimeline({ projects }: { projects: Project[] }) {
   return (
     <div className="relative">
       {/* Vertical line */}
-      <div className="absolute top-2 bottom-2 left-[calc(7rem+1.5rem+6px)] w-0.5 bg-gray-200 md:left-[calc(9rem+2.5rem+6px)] dark:bg-gray-700" />
+      <div className="absolute top-2 bottom-2 left-[calc(3.5rem+0.75rem+6px)] w-0.5 bg-gray-200 md:left-[calc(9rem+2.5rem+6px)] dark:bg-gray-700" />
 
       {projects.map((project) => (
         <ProjectTimelineEntry key={project.title} project={project} />
