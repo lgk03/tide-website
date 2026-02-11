@@ -172,19 +172,58 @@ export default function Home({ posts, members }: HomeProps) {
               {
                 title: 'Machine Learning',
                 description: 'Building AI that actually works in the real world',
-                icon: '🤖',
+                icon: (
+                  <svg
+                    className="h-10 w-10"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={1.5}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M12 2a4 4 0 0 1 4 4v1a1 1 0 0 0 1 1h1a4 4 0 0 1 0 8h-1a1 1 0 0 0-1 1v1a4 4 0 0 1-8 0v-1a1 1 0 0 0-1-1H6a4 4 0 0 1 0-8h1a1 1 0 0 0 1-1V6a4 4 0 0 1 4-4z" />
+                    <circle cx="12" cy="12" r="2" />
+                  </svg>
+                ),
                 color: 'from-[#5c82ff] to-pink-300',
               },
               {
                 title: 'Data Engineering',
                 description: 'Designing robust pipelines that power real-world applications',
-                icon: '⚡',
+                icon: (
+                  <svg
+                    className="h-10 w-10"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={1.5}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M4 6h16M4 6v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6M4 6l2-2h12l2 2" />
+                    <path d="M9 10l2 2 4-4" />
+                  </svg>
+                ),
                 color: 'from-[#5c82ff] to-pink-300',
               },
               {
                 title: 'Analytics',
                 description: 'Turning messy data into beautiful insights across industries',
-                icon: '📊',
+                icon: (
+                  <svg
+                    className="h-10 w-10"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={1.5}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M3 3v18h18" />
+                    <path d="M7 16l4-6 4 3 5-7" />
+                  </svg>
+                ),
                 color: 'from-[#5c82ff] to-pink-300',
               },
             ].map((item, index) => (
@@ -201,7 +240,7 @@ export default function Home({ posts, members }: HomeProps) {
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 transition-opacity duration-300 group-hover:opacity-10`}
                   />
-                  <div className="mb-4 text-6xl">{item.icon}</div>
+                  <div className="mb-4 text-[#5c82ff]">{item.icon}</div>
                   <h3 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
                     {item.title}
                   </h3>
@@ -363,7 +402,21 @@ export default function Home({ posts, members }: HomeProps) {
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="mb-4 text-4xl">🎓</div>
+                  <div className="mb-4 flex justify-center text-[#5c82ff]">
+                    <svg
+                      className="h-10 w-10"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={1.5}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                      <path d="M12 14l6.16-3.422A12.083 12.083 0 0 1 21 17.5c-3 2.5-6 3.5-9 3.5s-6-1-9-3.5a12.083 12.083 0 0 1 2.84-6.922L12 14z" />
+                      <path d="M21 10v5" />
+                    </svg>
+                  </div>
                   <h3 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
                     For Students
                   </h3>
@@ -379,7 +432,22 @@ export default function Home({ posts, members }: HomeProps) {
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="mb-4 text-4xl">💼</div>
+                  <div className="mb-4 flex justify-center text-[#5c82ff]">
+                    <svg
+                      className="h-10 w-10"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={1.5}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                      <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                      <path d="M12 12v4" />
+                      <path d="M2 12h20" />
+                    </svg>
+                  </div>
                   <h3 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
                     For Professionals
                   </h3>
