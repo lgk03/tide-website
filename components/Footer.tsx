@@ -27,7 +27,7 @@ export default function Footer() {
           {/* <div>{` • `}</div> */}
           {/* <Link href="/">{siteMetadata.title}</Link> */}
         </div>
-        <div className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+        <div className="flex items-center justify-center space-x-2 text-center text-sm text-gray-500 dark:text-gray-400">
           <span>Accredited by the Student Representation at the Technical University Munich</span>
         </div>
       </div>
