@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import AnnouncementBanner from './AnnouncementBanner'
 import Header from './Header'
 
 export default function HeaderWrapper() {
@@ -30,6 +31,7 @@ export default function HeaderWrapper() {
             : 'border-b border-white/20 bg-black/30 shadow-lg shadow-black/5 backdrop-blur-lg dark:bg-black/50'
         }`}
       >
+        <AnnouncementBanner />
         <div className="relative px-4 sm:px-6 xl:px-8">
           <Header isHomepage={true} />
         </div>
@@ -39,8 +41,11 @@ export default function HeaderWrapper() {
 
   // All other pages get full-width header too, but with normal styling
   return (
-    <div className="w-full px-4 sm:px-6 xl:px-8">
-      <Header isHomepage={false} />
+    <div>
+      <AnnouncementBanner />
+      <div className="w-full px-4 sm:px-6 xl:px-8">
+        <Header isHomepage={false} />
+      </div>
     </div>
   )
 }
