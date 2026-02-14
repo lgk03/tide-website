@@ -37,13 +37,23 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                 <div className="h-4 w-4 rounded-full border border-neutral-300 bg-neutral-200 p-2 dark:border-neutral-700 dark:bg-neutral-800" />
               </div>
               <h3 className="hidden text-sm font-bold text-neutral-500 md:block md:pl-20 md:text-5xl dark:text-neutral-500">
-                {item.title}
+                {item.title.split(' ').map((word, i) => (
+                  <React.Fragment key={i}>
+                    {word}
+                    {i === 0 && item.title.includes(' ') && <br />}
+                  </React.Fragment>
+                ))}
               </h3>
             </div>
 
             <div className="relative w-full pr-4 pl-20 md:pl-4">
               <h3 className="mb-4 block text-left text-sm font-bold text-neutral-500 md:hidden dark:text-neutral-500">
-                {item.title}
+                {item.title.split(' ').map((word, i) => (
+                  <React.Fragment key={i}>
+                    {word}
+                    {i === 0 && item.title.includes(' ') && <br />}
+                  </React.Fragment>
+                ))}
               </h3>
               {item.content}{' '}
             </div>

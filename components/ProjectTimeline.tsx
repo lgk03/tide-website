@@ -47,8 +47,13 @@ const statusConfig: Record<ProjectStatus, { label: string; icon: string; color: 
   },
 }
 
-function ProjectTimelineEntry({ project }: { project: Project }) {
-  const [isExpanded, setIsExpanded] = useState(false)
+interface ProjectTimelineEntryProps {
+  project: Project
+  isExpanded: boolean
+  onToggle: () => void
+}
+
+function ProjectTimelineEntry({ project, isExpanded, onToggle }: ProjectTimelineEntryProps) {
   const status = statusConfig[project.status]
 
   return (
@@ -75,7 +80,7 @@ function ProjectTimelineEntry({ project }: { project: Project }) {
         <button
           type="button"
           className={`min-w-0 flex-1 cursor-pointer overflow-hidden rounded-xl border bg-white text-left shadow-sm transition-all duration-300 dark:bg-gray-800 ${isExpanded ? 'border-primary-500/40 shadow-lg' : 'border-gray-200/60 dark:border-gray-700/60'}`}
-          onClick={() => setIsExpanded(!isExpanded)}
+          onClick={onToggle}
         >
           {/* Summary — always visible */}
           <div className="p-5 md:p-6">
@@ -141,13 +146,24 @@ function ProjectTimelineEntry({ project }: { project: Project }) {
 }
 
 export default function ProjectTimeline({ projects }: { projects: Project[] }) {
+  const [expandedProjectTitle, setExpandedProjectTitle] = useState<string | null>(null)
+
+  const handleToggle = (title: string) => {
+    setExpandedProjectTitle((prev) => (prev === title ? null : title))
+  }
+
   return (
     <div className="relative">
       {/* Vertical line */}
       <div className="absolute top-2 bottom-2 left-[calc(3.5rem+0.75rem+6px)] w-0.5 bg-gray-200 md:left-[calc(9rem+2.5rem+6px)] dark:bg-gray-700" />
 
       {projects.map((project) => (
-        <ProjectTimelineEntry key={project.title} project={project} />
+        <ProjectTimelineEntry
+          key={project.title}
+          project={project}
+          isExpanded={expandedProjectTitle === project.title}
+          onToggle={() => handleToggle(project.title)}
+        />
       ))}
     </div>
   )
