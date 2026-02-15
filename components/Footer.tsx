@@ -6,7 +6,7 @@ import Image from 'next/image'
 export default function Footer() {
   return (
     <footer>
-      <div className="flex flex-col items-center py-6">
+      <div className="flex flex-col items-center pt-6 pb-3">
         <div className="mb-2 flex space-x-4">
           {/* <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size={6} /> */}
           {/* <SocialIcon kind="github" href={siteMetadata.github} size={6} /> */}
