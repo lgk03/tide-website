@@ -1,7 +1,7 @@
 import { genPageMetadata } from 'app/seo'
 
 export const metadata = genPageMetadata({
-  title: 'Hackathon — Maintenance: Energy · Water · Wildcard',
+  title: 'Hackathon — Maintenance: Energy · Water · Process Sustainability',
 })
 
 export default function HackathonPage() {
@@ -90,24 +90,10 @@ export default function HackathonPage() {
             <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-white">
               Management & Infrastructure
             </h3>
-            <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-sm text-gray-500 dark:text-gray-400">
               Develop software for efficient grid management, smart charging, and infrastructure
               optimization.
             </p>
-            <ul className="space-y-1.5 text-sm text-gray-600 dark:text-gray-300">
-              <li className="flex items-center gap-2">
-                <span className="h-1 w-1 rounded-full bg-yellow-500" />
-                Grid load balancing
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-1 w-1 rounded-full bg-yellow-500" />
-                Smart charging systems
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-1 w-1 rounded-full bg-yellow-500" />
-                Infrastructure efficiency tracking
-              </li>
-            </ul>
           </div>
 
           <div className="rounded-2xl border border-gray-200 p-6 dark:border-gray-700">
@@ -117,51 +103,23 @@ export default function HackathonPage() {
             <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-white">
               Irrigation & Infrastructure
             </h3>
-            <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-sm text-gray-500 dark:text-gray-400">
               Build predictive maintenance and monitoring software for irrigation systems and water
               infrastructure.
             </p>
-            <ul className="space-y-1.5 text-sm text-gray-600 dark:text-gray-300">
-              <li className="flex items-center gap-2">
-                <span className="h-1 w-1 rounded-full bg-blue-500" />
-                Leak detection dashboards
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-1 w-1 rounded-full bg-blue-500" />
-                Smart scheduling algorithms
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-1 w-1 rounded-full bg-blue-500" />
-                Remote diagnostics & monitoring
-              </li>
-            </ul>
           </div>
 
           <div className="rounded-2xl border border-gray-200 p-6 dark:border-gray-700">
             <div className="mb-4 text-sm font-semibold tracking-wider text-purple-600 uppercase dark:text-purple-400">
-              Wildcard
+              Process Sustainability
             </div>
             <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-white">
-              Open Innovation
+              Sustainable Transformation
             </h3>
-            <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">
-              Open challenge for any circular economy solution — bring your own idea or solve a
-              partner challenge.
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              Leverage data-driven insights to uncover process inefficiencies and drive meaningful
+              environmental impact.
             </p>
-            <ul className="space-y-1.5 text-sm text-gray-600 dark:text-gray-300">
-              <li className="flex items-center gap-2">
-                <span className="h-1 w-1 rounded-full bg-purple-500" />
-                New circular business models
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-1 w-1 rounded-full bg-purple-500" />
-                Cross-sector optimization
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-1 w-1 rounded-full bg-purple-500" />
-                Novel waste-to-value systems
-              </li>
-            </ul>
           </div>
         </div>
       </section>
