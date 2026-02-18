@@ -197,23 +197,20 @@ export default function HackathonPage() {
         </div>
       </section>
 
-      {/* Contact */}
+      {/* Applications Disclaimer */}
       <section className="py-10">
-        <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h2 className="text-lg font-bold text-gray-900 dark:text-white">
-              Interested in sponsoring or participating?
-            </h2>
-            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-              Support the next generation of circular economy innovators.
-            </p>
-          </div>
-          <a
-            href="mailto:team@tum-tide.com"
-            className="bg-primary-500 hover:bg-primary-600 shrink-0 rounded-lg px-5 py-2.5 text-sm font-medium text-white transition"
-          >
-            Get in Touch
-          </a>
+        <div className="rounded-2xl border border-gray-200 p-6 text-center dark:border-gray-700">
+          <p className="font-bold text-gray-500 dark:text-gray-400">
+            Applications open in March.{' '}
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdHH-_uV20wr-EVj1ZpT_JpYMYOvV6EZztLEEw8rfUvInknRA/viewform?usp=publish-editor"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-500 hover:text-primary-400 font-medium underline underline-offset-2 transition"
+            >
+              Sign up here to get notified when applications go live.
+            </a>
+          </p>
         </div>
       </section>
     </div>
