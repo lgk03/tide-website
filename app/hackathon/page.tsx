@@ -13,8 +13,9 @@ export default function HackathonPage() {
           Hackathon: Sustainability for Infrastructure
         </h1>
         <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-          A two-day hackathon solving real-world sustainability challenges in energy, water, and
-          circular systems — partnered with high-growth startups and industry experts.
+          24 hours. One mission. Tackle real-world sustainability challenges in energy, water, and
+          circular systems in a non-stop hackathon — partnered with high-growth startups and
+          industry experts.
         </p>
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-500 dark:text-gray-400">
           <span className="flex items-center gap-1.5">
@@ -31,7 +32,7 @@ export default function HackathonPage() {
                 d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
               />
             </svg>
-            2 days
+            24 hours
           </span>
           <span className="flex items-center gap-1.5">
             <svg
@@ -52,7 +53,7 @@ export default function HackathonPage() {
                 d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
               />
             </svg>
-            Munich, Celonis Office
+            Munich
           </span>
           <span className="flex items-center gap-1.5">
             <svg
@@ -134,9 +135,9 @@ export default function HackathonPage() {
           for rapid feedback.
         </p>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-3">
           <div className="rounded-2xl border border-gray-200 p-6 dark:border-gray-700">
-            <div className="mb-3 text-sm font-semibold text-[#5c82ff]">Day 1</div>
+            <div className="mb-3 text-sm font-semibold text-[#5c82ff]">Kickoff</div>
             <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-300">
               <li>Challenge briefings & team formation</li>
               <li>Mentor introductions</li>
@@ -145,7 +146,16 @@ export default function HackathonPage() {
             </ul>
           </div>
           <div className="rounded-2xl border border-gray-200 p-6 dark:border-gray-700">
-            <div className="mb-3 text-sm font-semibold text-[#5c82ff]">Day 2</div>
+            <div className="mb-3 text-sm font-semibold text-[#5c82ff]">24h Hacking Sprint</div>
+            <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-300">
+              <li>Non-stop building & development</li>
+              <li>Continuous mentor support</li>
+              <li>Midnight snacks & energy boosts</li>
+              <li>Around-the-clock collaboration</li>
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-gray-200 p-6 dark:border-gray-700">
+            <div className="mb-3 text-sm font-semibold text-[#5c82ff]">Final Stretch & Demos</div>
             <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-300">
               <li>Final builds & testing</li>
               <li>Project demos</li>
