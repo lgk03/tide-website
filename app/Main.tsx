@@ -229,14 +229,14 @@ export default function Home({ posts, members }: HomeProps) {
             ].map((item, index) => (
               <motion.div
                 key={index}
-                className="group relative"
+                className="group relative h-full"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 whileHover={{ y: -10 }}
               >
-                <div className="relative overflow-hidden rounded-3xl border border-gray-200 bg-white p-8 shadow-xl transition-all duration-300 group-hover:shadow-2xl dark:border-gray-700 dark:bg-gray-800">
+                <div className="relative h-full overflow-hidden rounded-3xl border border-gray-200 bg-white p-8 shadow-xl transition-all duration-300 group-hover:shadow-2xl dark:border-gray-700 dark:bg-gray-800">
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 transition-opacity duration-300 group-hover:opacity-10`}
                   />
