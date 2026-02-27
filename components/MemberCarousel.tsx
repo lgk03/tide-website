@@ -18,16 +18,17 @@ export default function MemberCarousel({ members }: MemberCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [hasSwiped, setHasSwiped] = useState(false)
 
-  // Auto-rotate every 4 seconds when not hovered
+  // Auto-rotate every 4 seconds when not hovered and user hasn't swiped manually
   useEffect(() => {
-    if (!isHovered && members && members.length > 0) {
+    if (!isHovered && !hasSwiped && members && members.length > 0) {
       const interval = setInterval(() => {
         setCurrentIndex((prev) => (prev + 1) % members.length)
       }, 4000)
       return () => clearInterval(interval)
     }
-  }, [isHovered, members])
+  }, [isHovered, hasSwiped, members])
 
   // Track if device is mobile to enable drag only there
   useEffect(() => {
@@ -120,8 +121,10 @@ export default function MemberCarousel({ members }: MemberCarouselProps) {
                 dragElastic={0.2}
                 onDragEnd={(e, { offset }) => {
                   if (offset.x < -50) {
+                    setHasSwiped(true)
                     handleMemberClick(2) // Swiped left, go to next
                   } else if (offset.x > 50) {
+                    setHasSwiped(true)
                     handleMemberClick(0) // Swiped right, go to previous
                   }
                 }}
