@@ -17,6 +17,7 @@ interface MemberCarouselProps {
 export default function MemberCarousel({ members }: MemberCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   // Auto-rotate every 4 seconds when not hovered
   useEffect(() => {
@@ -27,6 +28,17 @@ export default function MemberCarousel({ members }: MemberCarouselProps) {
       return () => clearInterval(interval)
     }
   }, [isHovered, members])
+
+  // Track if device is mobile to enable drag only there
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    // Only run on client side
+    if (typeof window !== 'undefined') {
+      checkMobile()
+      window.addEventListener('resize', checkMobile)
+      return () => window.removeEventListener('resize', checkMobile)
+    }
+  }, [])
 
   // Safety check for empty members array
   if (!members || members.length === 0) {
@@ -103,6 +115,16 @@ export default function MemberCarousel({ members }: MemberCarouselProps) {
                   y: isCenter ? -10 : -5,
                 }}
                 onClick={() => handleMemberClick(member.position)}
+                drag={isMobile ? 'x' : false}
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.2}
+                onDragEnd={(e, { offset }) => {
+                  if (offset.x < -50) {
+                    handleMemberClick(2) // Swiped left, go to next
+                  } else if (offset.x > 50) {
+                    handleMemberClick(0) // Swiped right, go to previous
+                  }
+                }}
                 style={{
                   perspective: '1000px',
                   transformStyle: 'preserve-3d',
@@ -199,7 +221,7 @@ export default function MemberCarousel({ members }: MemberCarouselProps) {
 
       {/* Side navigation arrows */}
       <button
-        className="absolute top-1/2 left-16 z-30 -translate-y-1/2 transform rounded-full bg-white/80 p-3 shadow-lg transition-all duration-300 hover:scale-110 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800"
+        className="absolute top-1/2 left-16 z-30 hidden -translate-y-1/2 transform rounded-full bg-white/80 p-3 shadow-lg transition-all duration-300 hover:scale-110 hover:bg-white md:block dark:bg-gray-800/80 dark:hover:bg-gray-800"
         onClick={() => setCurrentIndex((prev) => (prev - 1 + members.length) % members.length)}
       >
         <svg
@@ -213,7 +235,7 @@ export default function MemberCarousel({ members }: MemberCarouselProps) {
       </button>
 
       <button
-        className="absolute top-1/2 right-16 z-30 -translate-y-1/2 transform rounded-full bg-white/80 p-3 shadow-lg transition-all duration-300 hover:scale-110 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800"
+        className="absolute top-1/2 right-16 z-30 hidden -translate-y-1/2 transform rounded-full bg-white/80 p-3 shadow-lg transition-all duration-300 hover:scale-110 hover:bg-white md:block dark:bg-gray-800/80 dark:hover:bg-gray-800"
         onClick={() => setCurrentIndex((prev) => (prev + 1) % members.length)}
       >
         <svg
