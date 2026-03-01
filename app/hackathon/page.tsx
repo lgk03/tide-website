@@ -74,11 +74,7 @@ export default function HackathonPage() {
               Teams of 3–5
             </span>
           </div>
-          <ApplyNowButton
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdHH-_uV20wr-EVj1ZpT_JpYMYOvV6EZztLEEw8rfUvInknRA/viewform?usp=publish-editor"
-            text="Apply Now"
-            size="small"
-          />
+          <ApplyNowButton href="https://luma.com/a2i6s34i" text="Apply Now" size="small" />
         </div>
       </div>
 
@@ -205,22 +201,9 @@ export default function HackathonPage() {
         </div>
       </section>
 
-      {/* Applications Disclaimer */}
-      <section className="py-10">
-        <div className="rounded-2xl border border-gray-200 p-6 text-center dark:border-gray-700">
-          <p className="font-bold text-gray-500 dark:text-gray-400">
-            Applications open in March.{' '}
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdHH-_uV20wr-EVj1ZpT_JpYMYOvV6EZztLEEw8rfUvInknRA/viewform?usp=publish-editor"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary-500 hover:text-primary-400 font-medium underline underline-offset-2 transition"
-            >
-              Sign up here to get notified when applications go live.
-            </a>
-          </p>
-        </div>
-      </section>
+      <div className="flex justify-center p-6">
+        <ApplyNowButton href="https://luma.com/a2i6s34i" text="Apply Now" size="small" />
+      </div>
     </div>
   )
 }
